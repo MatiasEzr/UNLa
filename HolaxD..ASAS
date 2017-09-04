@@ -1,2 +1,0 @@
-# UNLa
-Seminario de Lenguajes

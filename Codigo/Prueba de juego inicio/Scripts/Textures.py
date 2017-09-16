@@ -2,7 +2,7 @@ import pygame
 
 pygame.init()
 
-class Titles:
+class Tiles:  #Azulejos (cuadrados)
 
     Size = 32
 
@@ -19,6 +19,8 @@ class Titles:
     Piedras = Load_Texture("graphics\\piedras.png", Size)
 
     Agua = Load_Texture("graphics\\agua.png", Size)
+
+    Texture_Tags = {"1" : Pasto, "2" : Piedras, "3" : Agua}
 
     
     

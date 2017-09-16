@@ -1,0 +1,8 @@
+En el dia de la fecha 11/08/17 nos reunimos en el buffet de la UNLa a hacer una puesta en comun de lo visto en clase.
+Aun no tenemos la dinamica del juego pero va a ser un estilo de juego libre(no juego de rol) pero con caracteristicas similares.
+Hemos fijado que cada integrante del grupo va a programar con Python para enfocarse en el tema del trabajo y asi poder hacerlo mas entretenido y dinamico.
+Los integrantes del grupo presente son los que hoy estamos reunidos.
+Mauro Hidalgo
+Julian Gonzalez
+Matias Lizarraga
+Daniel Geier

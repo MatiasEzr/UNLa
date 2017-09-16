@@ -1,0 +1,29 @@
+import pygame, sys
+
+pygame.init()
+
+def create_window():
+    global window, window_altura, window_ancho, window_title
+    window_ancho, window_altura = 800, 600
+    window_title = "Barmi"
+    pygame.display.set_caption(window_title)
+    window = pygame.display.set_mode((window_ancho, window_altura), pygame.HWSURFACE|pygame.DOUBLEBUF)
+
+create_window()
+  
+isRunning = True
+
+while isRunning:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            isRunning = False
+
+
+    window.fill((0, 0, 0))
+
+    pygame.display.update()
+
+
+
+pygame.quit()
+sys.exit()

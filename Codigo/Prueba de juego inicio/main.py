@@ -2,21 +2,14 @@ import pygame, sys, time
 from Scripts.UltraColor import *
 from Scripts.Textures import *
 from Scripts.globals import *
+from Scripts.map_engine import *
 pygame.init()
 
 cSec = 0
 cFrame = 0
 FPS = 0
 
-map_data = []
-
-for x in range (10):
-    for y in range(6):
-        map_data.append((x, y, "1"))
-
-for x in range (10, 15):
-    for y in range (6, 10):
-         map_data.append((x, y, "2"))
+terrain = Map_Engine.load_map("maps\\el barmi.map")
         
 
 fps_font = pygame.font.Font("C:\\Windows\\Fonts\\Verdana.ttf", 20)
@@ -35,7 +28,7 @@ def show_fps():
 def create_window():
     global window, window_altura, window_ancho, window_title
     window_ancho, window_altura = 800, 600
-    window_title = "Barmi"
+    window_title = "Nombre del juego"
     pygame.display.set_caption(window_title)
     window = pygame.display.set_mode((window_ancho, window_altura), pygame.HWSURFACE|pygame.DOUBLEBUF)
 
@@ -68,6 +61,7 @@ while isRunning:
             isRunning = False
 
         if event.type == pygame.KEYDOWN:
+            
             if event.key == pygame.K_w:
                 Globals.camera_move = 1
             elif event.key == pygame.K_s:
@@ -79,6 +73,10 @@ while isRunning:
 
         elif event.type == pygame.KEYUP:
             Globals.camera_move == 0
+
+        
+
+
 
 
     
@@ -102,13 +100,9 @@ while isRunning:
     window.blit(Sky, (0, 0))
 
     #Terreno
-    
-    for x in range (0, 640, Tiles.Size):
-        for y in range (0,480, Tiles.Size):
-          for i in map_data:
-              tile = (i[0] * Tiles.Size, i[1]*Tiles.Size)
-              window.blit(Tiles.Texture_Tags[i[2]], (tile[0] + Globals.camera_x, tile[1] + Globals.camera_y))
-            
+
+    window.blit(terrain, (Globals.camera_x, Globals.camera_y))
+
     show_fps()
 
     

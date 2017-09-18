@@ -1,5 +1,5 @@
 En el dia de la fecha 11/09 estamos reunidos en el Edificio Jose Hernandez para concluir con los requisitos del juego y que tipo de juego va a ser.
-Va a ser un juego estilo plataforma/aventura en la cual va a estar centrado en un personaje pero en el menu puedes elejir uno de los dos personajes disponibles(masculino o femenino).
+Va a ser un juego estilo aventura en la cual va a estar centrado en un personaje pero en el menu puedes elejir uno de los dos personajes disponibles(masculino o femenino).
 El nombre del juego no esta aun definido.
 Los integrantes reunidos son
 Mauro Hidalgo

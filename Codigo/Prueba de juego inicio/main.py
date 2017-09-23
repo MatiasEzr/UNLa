@@ -3,6 +3,8 @@ from Scripts.UltraColor import *
 from Scripts.Textures import *
 from Scripts.globals import *
 from Scripts.map_engine import *
+from Scripts.NPC import *
+from Scripts.player import *
 pygame.init()
 
 cSec = 0
@@ -52,6 +54,15 @@ def count_fps():
 
 
 create_window()
+
+
+
+player = Player("Barmi")
+player_w, player_h = player.width, player.height
+player_x = ((window_ancho / 2 - player_w / 2 - Globals.camera_x) / Tiles.Size)
+player_y = ((window_altura / 2 - player_h / 2 - Globals.camera_y) / Tiles.Size)
+
+
   
 isRunning = True
 
@@ -64,22 +75,21 @@ while isRunning:
             
             if event.key == pygame.K_w:
                 Globals.camera_move = 1
+                player.facing = "north"
             elif event.key == pygame.K_s:
                 Globals.camera_move = 2
+                player.facing = "south"
             elif event.key == pygame.K_a:
                 Globals.camera_move = 3
+                player.facing = "east"
             elif event.key == pygame.K_d:
                 Globals.camera_move = 4
+                player.facing = "west"
 
         elif event.type == pygame.KEYUP:
             Globals.camera_move == 0
 
         
-
-
-
-
-    
 
     #Logic 
     if Globals.camera_move == 1:
@@ -90,6 +100,10 @@ while isRunning:
         Globals.camera_x += 100 * deltatime
     elif Globals.camera_move == 4:
         Globals.camera_x -= 100 * deltatime
+
+    player_x = ((window_ancho / 2 - player_w / 2 - Globals.camera_x) / Tiles.Size)
+    player_y = ((window_altura / 2 - player_h / 2 - Globals.camera_y) / Tiles.Size)
+
         
         
             
@@ -102,6 +116,8 @@ while isRunning:
     #Terreno
 
     window.blit(terrain, (Globals.camera_x, Globals.camera_y))
+
+    player.render(window, (window_ancho / 2 - player_w / 2, window_altura / 2 - player_h / 2))
 
     show_fps()
 

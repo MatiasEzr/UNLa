@@ -48,7 +48,10 @@ class Map_Engine:
         for tile in tiles:
             if tile[1] in Tiles.Texture_Tags:
                 Map_Engine.add_tile(Tiles.Texture_Tags[tile[1]], tile[0], terrain)
-            
+
+            if tile[1] in Tiles.Blocked_Types:
+                Tiles.Blocked.append(tile[0])
+        
 
         return terrain
         

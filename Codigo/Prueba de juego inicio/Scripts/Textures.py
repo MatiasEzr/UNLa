@@ -8,7 +8,7 @@ class Tiles:  #Azulejos (cuadrados)
 
     Blocked = []
 
-    Blocked_Types = ["3"]     #aca pongo los azulejos que no se pueden traspasar
+    Blocked_Types = ["2"]     #aca pongo los azulejos que no se pueden traspasar
 
     def Blocked_At(pos):
         if list(pos) in Tiles.Blocked:

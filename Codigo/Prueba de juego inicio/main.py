@@ -1,4 +1,4 @@
-import pygame, sys, time
+import pygame, sys, time, math
 from Scripts.UltraColor import *
 from Scripts.Textures import *
 from Scripts.globals import *
@@ -93,13 +93,17 @@ while isRunning:
 
     #Logic 
     if Globals.camera_move == 1:
-        Globals.camera_y += 100 * deltatime
+        if not Tiles.Blocked_At((round(player_x), math.floor(player_y))):
+            Globals.camera_y += 100 * deltatime
     elif Globals.camera_move == 2:
-        Globals.camera_y -= 100 * deltatime
+        if not Tiles.Blocked_At((round(player_x), math.ceil(player_y))):
+            Globals.camera_y -= 100 * deltatime
     elif Globals.camera_move == 3:
-        Globals.camera_x += 100 * deltatime
+        if not Tiles.Blocked_At((math.floor(player_x), round(player_y))):
+            Globals.camera_x += 100 * deltatime
     elif Globals.camera_move == 4:
-        Globals.camera_x -= 100 * deltatime
+        if not Tiles.Blocked_At((math.ceil(player_x), round(player_y))):
+            Globals.camera_x -= 100 * deltatime
 
     player_x = ((window_ancho / 2 - player_w / 2 - Globals.camera_x) / Tiles.Size)
     player_y = ((window_altura / 2 - player_h / 2 - Globals.camera_y) / Tiles.Size)

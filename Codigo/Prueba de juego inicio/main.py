@@ -87,7 +87,7 @@ while isRunning:
                 player.facing = "west"
 
         elif event.type == pygame.KEYUP:
-            Globals.camera_move == 0
+            Globals.camera_move = 0
 
         
 

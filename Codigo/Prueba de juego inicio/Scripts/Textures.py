@@ -30,7 +30,7 @@ class Tiles:  #Azulejos (cuadrados)
 
     Agua = Load_Texture("graphics\\agua.png", Size)
 
-    Tierra= Load_Texture("graphics\\lava.png", Size)
+    Lava= Load_Texture("graphics\\lava.png", Size)
 
     Texture_Tags = {"1" : Pasto, "2" : Piedras, "3" : Agua, "4": Lava}
 

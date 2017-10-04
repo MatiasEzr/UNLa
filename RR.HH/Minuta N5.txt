@@ -1,0 +1,9 @@
+En el dia 2 de octubre, vimos como primer objetivo a corto alcance,
+terminar un juego de tipo survival , y si es posible ampliarlo a un juego rol,
+dependiendo de la dificultad que tengamos en el desarrollo de este.
+Comentamos también las modificaciones que hicimos en el codigo durante los dias transcurridos, 
+tales como:
+el mapa, el pj, los movimientos que este ultimo realiza, la introducción del menu, etc.
+Por ultimo debatimos sobre la historia del juego/pj dependiendo si realizamos un rol o survival.
+
+

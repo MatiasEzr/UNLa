@@ -112,12 +112,12 @@ while isRunning:
             if event.key == pygame.K_F4:
                 brush = "r"
             elif event.key == pygame.K_F1:
-                selection = input("Brush tag: ")
+                selection = input("Numero de azulejo: ")
                 brush = selection
 
             #Guardar mapa
             if event.key == pygame.K_F11:
-                name = input("Map Name: ")
+                name = input("Nombre del mapa: ")
                 export_map(name +".map")
                 print("Mapa guardado correctamente!")
 

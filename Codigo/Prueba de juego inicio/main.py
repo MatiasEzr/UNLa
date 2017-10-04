@@ -1,10 +1,11 @@
 import pygame, sys, time, math
-from Scripts.UltraColor import *
 from Scripts.Textures import *
 from Scripts.globals import *
 from Scripts.map_engine import *
 from Scripts.NPC import *
 from Scripts.player import *
+from Scripts.meloonatic_gui import *
+from Scripts.UltraColor import *
 pygame.init()
 
 cSec = 0
@@ -63,6 +64,16 @@ player_x = ((window_ancho / 2 - player_w / 2 - Globals.camera_x) / Tiles.Size)
 player_y = ((window_altura / 2 - player_h / 2 - Globals.camera_y) / Tiles.Size)
 
 
+#Inicializar GUI
+
+def Play():
+    Globals.scene="game"
+btnPlay= Menu.Button(text="Jugar",rect=(20,20,160,60),
+                    bg=Color.Gray,fg=Color.White,
+                    bgr= Color.CornflowerBlue, tag= ("menu",None))
+btnPlay.Left= window_ancho / 2 - btnPlay.Width /  2
+btnPlay.Command= Play
+
   
 isRunning = True
 
@@ -89,48 +100,62 @@ while isRunning:
         elif event.type == pygame.KEYUP:
             Globals.camera_move = 0
 
-        
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            if event.button == 1: #click izquierdo
+                # Evento manejado boton click
+                for btn in Menu.Button.All:
+                    if btn.Tag[0]== Globals.scene and btn.Rolling:
+                        if btn.Command!=None:
+                            btn.Command()  #Do button event
+                        btn.Rolling=False
+                        break   #salir loop
+                            
+     
+    #Render scene
+    if Globals.scene=="game" :   
 
-    #Logic 
-    if Globals.camera_move == 1:
-        if not Tiles.Blocked_At((round(player_x), math.floor(player_y))):
-            Globals.camera_y += 100 * deltatime
-    elif Globals.camera_move == 2:
-        if not Tiles.Blocked_At((round(player_x), math.ceil(player_y))):
-            Globals.camera_y -= 100 * deltatime
-    elif Globals.camera_move == 3:
-        if not Tiles.Blocked_At((math.floor(player_x), round(player_y))):
-            Globals.camera_x += 100 * deltatime
-    elif Globals.camera_move == 4:
-        if not Tiles.Blocked_At((math.ceil(player_x), round(player_y))):
-            Globals.camera_x -= 100 * deltatime
+    
+        #Logic 
+        if Globals.camera_move == 1:
+            if not Tiles.Blocked_At((round(player_x), math.floor(player_y))):
+                Globals.camera_y += 100 * deltatime
+        elif Globals.camera_move == 2:
+            if not Tiles.Blocked_At((round(player_x), math.ceil(player_y))):
+                Globals.camera_y -= 100 * deltatime
+        elif Globals.camera_move == 3:
+            if not Tiles.Blocked_At((math.floor(player_x), round(player_y))):
+                Globals.camera_x += 100 * deltatime
+        elif Globals.camera_move == 4:
+            if not Tiles.Blocked_At((math.ceil(player_x), round(player_y))):
+                Globals.camera_x -= 100 * deltatime
 
-    player_x = ((window_ancho / 2 - player_w / 2 - Globals.camera_x) / Tiles.Size)
-    player_y = ((window_altura / 2 - player_h / 2 - Globals.camera_y) / Tiles.Size)
+        player_x = ((window_ancho / 2 - player_w / 2 - Globals.camera_x) / Tiles.Size)
+        player_y = ((window_altura / 2 - player_h / 2 - Globals.camera_y) / Tiles.Size)
 
-        
-        
             
-          
+            
+                
+              
 
-    # Render graphics: Lo que hay dentro de la ventana
+        # Render graphics: Lo que hay dentro de la ventana
 
-    window.blit(Sky, (0, 0))
+        window.blit(Sky, (0, 0))
 
-    #Terreno
+        #Terreno
 
-    window.blit(terrain, (Globals.camera_x, Globals.camera_y))
+        window.blit(terrain, (Globals.camera_x, Globals.camera_y))
 
-    player.render(window, (window_ancho / 2 - player_w / 2, window_altura / 2 - player_h / 2))
+        player.render(window, (window_ancho / 2 - player_w / 2, window_altura / 2 - player_h / 2))
 
+    #Process menu
+    elif Globals.scene=="menu":
+        window.fill(Color.Fog)
+
+        btnPlay.Render(window) #mostrar menu
+    
     show_fps()
 
     
-
-
-
-    
-
     pygame.display.update()
 
     count_fps()

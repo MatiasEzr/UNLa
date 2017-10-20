@@ -22,6 +22,13 @@ Sky = pygame.Surface(sky.get_size(), pygame.HWSURFACE)
 Sky.blit(sky, (0, 0))
 del sky
 
+logo_img_temp =pygame.image.load("graphics\\logo.png")
+logo_img_temp= pygame.transform.scale(logo_img_temp,(200,200))
+logo_img= pygame.Surface(logo_img_temp.get_size(),pygame.HWSURFACE)
+logo_img.blit(logo_img_temp,(0,0))
+del logo_img_temp
+
+clock=pygame.time.Clock()
 #Metodo para mostrar los fps
 
 def show_fps():
@@ -68,13 +75,31 @@ player_y = ((window_altura / 2 - player_h / 2 - Globals.camera_y) / Tiles.Size)
 
 def Play():
     Globals.scene="game"
-btnPlay= Menu.Button(text="Jugar",rect=(20,20,160,60),
-                    bg=Color.Gray,fg=Color.White,
-                    bgr= Color.CornflowerBlue, tag= ("menu",None))
+def Exit():
+    global isRunning
+    isRunning =False
+
+btnPlay= Menu.Button(text="Jugar",rect=(0,0,300,60),
+                     tag= ("menu",None))
 btnPlay.Left= window_ancho / 2 - btnPlay.Width /  2
+btnPlay.Top= window_altura / 2 - btnPlay.Height /  2
 btnPlay.Command= Play
 
-  
+btnExit=Menu.Button(text= "Salir", rect= (0,0,300,60),
+                    tag= ("menu",None))
+
+btnExit.Left=btnPlay.Left
+btnExit.Top= btnPlay.Top+btnExit.Height+3
+btnExit.Command=Exit
+
+
+menuTitle= Menu.Text(text="Apocalipsis Minecraft",color= Color.Cyan,
+                     font= Font.Large)
+menuTitle.Left,menuTitle.Top=window_ancho/2 - menuTitle.Width / 2,0
+
+logo= Menu.Image(bitmap=logo_img)
+logo.Left= window_ancho/2 - logo.Height/2
+logo.Top= menuTitle.Top + menuTitle.Height +3
 isRunning = True
 
 while isRunning:
@@ -151,7 +176,11 @@ while isRunning:
     elif Globals.scene=="menu":
         window.fill(Color.Fog)
 
-        btnPlay.Render(window) #mostrar menu
+        logo.Render(window)
+        menuTitle.Render(window)
+        for btn in Menu.Button.All:
+           if btn.Tag[0]=="menu":
+               btn.Render(window)
     
     show_fps()
 

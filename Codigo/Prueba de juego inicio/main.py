@@ -6,13 +6,14 @@ from Scripts.NPC import *
 from Scripts.player import *
 from Scripts.meloonatic_gui import *
 from Scripts.UltraColor import *
+from Timer import *
 pygame.init()
 
 cSec = 0
 cFrame = 0
 FPS = 0
 
-terrain = Map_Engine.load_map("maps\\el barmi.map")
+terrain = Map_Engine.load_map("maps\\Test1.map")
         
 
 fps_font = pygame.font.Font("C:\\Windows\\Fonts\\Verdana.ttf", 20)
@@ -28,7 +29,7 @@ logo_img= pygame.Surface(logo_img_temp.get_size(),pygame.HWSURFACE)
 logo_img.blit(logo_img_temp,(0,0))
 del logo_img_temp
 
-clock=pygame.time.Clock()
+
 #Metodo para mostrar los fps
 
 def show_fps():
@@ -36,26 +37,22 @@ def show_fps():
     window.blit(fps_overlay, (0,0))
 
 def create_window():
-    global window, window_altura, window_ancho, window_title
+    global window, window_altura, window_ancho, window_title,clock
     window_ancho, window_altura = 800, 600
     window_title = "Nombre del juego"
     pygame.display.set_caption(window_title)
     window = pygame.display.set_mode((window_ancho, window_altura), pygame.HWSURFACE|pygame.DOUBLEBUF)
-
+    clock=pygame.time.Clock()
 
 #Contador de FPS
     
 def count_fps():
-    global cSec, cFrame, FPS, deltatime
-
-    if cSec == time.strftime("%S"):  #Segundo/Minuto/Hora en ese momento
-        cFrame += 1
-    else:
-        FPS = cFrame
-        cFrame = 0
-        cSec = time.strftime("%S")
-        if FPS > 0:
-            deltatime = 1 / FPS
+    global FPS
+    
+    FPS= clock.get_fps()
+    if FPS > 0:
+        Globals.deltatime = 1 / FPS
+        
         
 
 #Creacion de ventana principal (cambiar nombre desde window_title)
@@ -70,6 +67,9 @@ player_w, player_h = player.width, player.height
 player_x = ((window_ancho / 2 - player_w / 2 - Globals.camera_x) / Tiles.Size)
 player_y = ((window_altura / 2 - player_h / 2 - Globals.camera_y) / Tiles.Size)
 
+
+
+man1= Male1(name="Andres", pos=(200,300))
 
 #Inicializar GUI
 
@@ -143,16 +143,16 @@ while isRunning:
         #Logic 
         if Globals.camera_move == 1:
             if not Tiles.Blocked_At((round(player_x), math.floor(player_y))):
-                Globals.camera_y += 100 * deltatime
+                Globals.camera_y += 100 * Globals.deltatime
         elif Globals.camera_move == 2:
             if not Tiles.Blocked_At((round(player_x), math.ceil(player_y))):
-                Globals.camera_y -= 100 * deltatime
+                Globals.camera_y -= 100 * Globals.deltatime
         elif Globals.camera_move == 3:
             if not Tiles.Blocked_At((math.floor(player_x), round(player_y))):
-                Globals.camera_x += 100 * deltatime
+                Globals.camera_x += 100 * Globals.deltatime
         elif Globals.camera_move == 4:
             if not Tiles.Blocked_At((math.ceil(player_x), round(player_y))):
-                Globals.camera_x -= 100 * deltatime
+                Globals.camera_x -= 100 * Globals.deltatime
 
         player_x = ((window_ancho / 2 - player_w / 2 - Globals.camera_x) / Tiles.Size)
         player_y = ((window_altura / 2 - player_h / 2 - Globals.camera_y) / Tiles.Size)
@@ -170,6 +170,9 @@ while isRunning:
 
         window.blit(terrain, (Globals.camera_x, Globals.camera_y))
 
+        for npc in NPC.AllNPCs:
+            npc.Render(window)
+
         player.render(window, (window_ancho / 2 - player_w / 2, window_altura / 2 - player_h / 2))
 
     #Process menu
@@ -186,7 +189,7 @@ while isRunning:
 
     
     pygame.display.update()
-
+    clock.tick(60)
     count_fps()
 
 

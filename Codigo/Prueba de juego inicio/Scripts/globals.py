@@ -5,5 +5,6 @@ class Globals:
     
     camera_move = 0
     scene="menu"
+    deltatime=0
     
     

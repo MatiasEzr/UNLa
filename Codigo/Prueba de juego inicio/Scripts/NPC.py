@@ -1,4 +1,4 @@
-import pygame
+import pygame, random
 from Scripts.globals import *
 from Timer import *
 pygame.init()

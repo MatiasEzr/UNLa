@@ -1,4 +1,4 @@
-import pygame, random
+import pygame,random
 from Scripts.globals import *
 from Timer import *
 pygame.init()
@@ -30,6 +30,7 @@ def get_faces(sprite):
 def MoveNPC(npc):
     npc.facing= random.choice(("south","north","east","west"))
     npc.walking= random.choice ((True,False))
+
 class NPC:
     AllNPCs= []  
         
@@ -44,7 +45,7 @@ class NPC:
          self.height = sprite.get_height()
          self.walking= False
          self.Timer= Timer(1)
-         self.Timer.OnNext=  lambda: MoveNPC(self)
+         self.Timer.OnNext= lambda: MoveNPC(self)
          self.Timer.Start()
 
          #NPC FACES
@@ -61,9 +62,9 @@ class NPC:
          if self.walking:
              move_speed=100*Globals.deltatime
              if self.facing=="south":
-                 self.Y -=move_speed
+                 self.Y +=move_speed
              elif self.facing=="north":
-                 self.Y += move_speed
+                 self.Y -= move_speed
              elif self.facing=="east":
                  self.X -= move_speed    
              elif self.facing=="west":

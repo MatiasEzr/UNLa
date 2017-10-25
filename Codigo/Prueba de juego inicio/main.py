@@ -67,14 +67,26 @@ player_w, player_h = player.width, player.height
 player_x = ((window_ancho / 2 - player_w / 2 - Globals.camera_x) / Tiles.Size)
 player_y = ((window_altura / 2 - player_h / 2 - Globals.camera_y) / Tiles.Size)
 
+#Iniciar musica
+pygame.mixer.music.load("music\\title.wav")
+pygame.mixer.music.play(-1)
 
+#Iniciar sonido
+btnSound= pygame.mixer.Sound("sounds\\MetalSlug.wav")
 
 man1= Male1(name="Andres", pos=(200,300))
+man2= Male1(name="DanyGeier", pos=(260,300))
+man3= Male1(name="Yo", pos=(300,300))
+
+
 
 #Inicializar GUI
 
+
 def Play():
     Globals.scene="game"
+    pygame.mixer.music.load("music\\forest.wav")
+    pygame.mixer.music.play(-1)
 def Exit():
     global isRunning
     isRunning =False
@@ -132,6 +144,7 @@ while isRunning:
                     if btn.Tag[0]== Globals.scene and btn.Rolling:
                         if btn.Command!=None:
                             btn.Command()  #Do button event
+                        btnSound.play()    
                         btn.Rolling=False
                         break   #salir loop
                             

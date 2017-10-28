@@ -24,15 +24,15 @@ class Tiles:  #Azulejos (cuadrados)
         return surface
 
 
-    Pasto = Load_Texture("graphics\\pasto.png", Size)
+    Pasto = Load_Texture("graphics\\pasto2.png", Size)
 
     Piedras = Load_Texture("graphics\\piedras.png", Size)
 
-    Agua = Load_Texture("graphics\\agua.png", Size)
+    Agua = Load_Texture("graphics\\agua2.png", Size)
 
-    Lava= Load_Texture("graphics\\lava.png", Size)
+    ArbolViejo= Load_Texture("graphics\\arbolViejo.png", Size)
 
-    Texture_Tags = {"1" : Pasto, "2" : Piedras, "3" : Agua, "4": Lava}
+    Texture_Tags = {"1" : Pasto, "2" : Piedras, "3" : Agua, "4": ArbolViejo}
 
     
     

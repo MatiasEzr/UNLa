@@ -16,9 +16,12 @@ FPS = 0
 terrain = Map_Engine.load_map("maps\\Test1.map")
         
 
+imagenDisparo = pygame.image.load("Graphics\\disparo.png")    # Nuevo en 0.05
+rectanguloDisparo = imagenDisparo.get_rect()        # Nuevo en 0.05
+disparoActivo = False                               # Nuevo en 0.05
 fps_font = pygame.font.Font("C:\\Windows\\Fonts\\Verdana.ttf", 20)
 
-sky = pygame.image.load("graphics\\cielo.png")
+sky = pygame.image.load("Graphics\\cielo.png")
 Sky = pygame.Surface(sky.get_size(), pygame.HWSURFACE)
 Sky.blit(sky, (0, 0))
 del sky
@@ -44,8 +47,9 @@ def create_window():
     window = pygame.display.set_mode((window_ancho, window_altura), pygame.HWSURFACE|pygame.DOUBLEBUF)
     clock=pygame.time.Clock()
 
+
 #Contador de FPS
-    
+   
 def count_fps():
     global FPS
     
@@ -133,10 +137,10 @@ while isRunning:
             elif event.key == pygame.K_d:
                 Globals.camera_move = 4
                 player.facing = "west"
-
+            
         elif event.type == pygame.KEYUP:
             Globals.camera_move = 0
-
+        
         elif event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1: #click izquierdo
                 # Evento manejado boton click
@@ -180,7 +184,7 @@ while isRunning:
         window.blit(Sky, (0, 0))
 
         #Terreno
-
+        
         window.blit(terrain, (Globals.camera_x, Globals.camera_y))
 
         for npc in NPC.AllNPCs:

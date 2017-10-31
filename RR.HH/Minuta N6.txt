@@ -4,4 +4,4 @@ En el dia 13/10/17 se realizo una puesta en comun sobre todo lo que trabajamos d
 -Incluir personaje principal
 -Añadir colisiones y tipos de daño
 Para finalizar, se discutieron los factores mas importantes de la documentacion tecnica del juego para luego ser entregados.
-Los integrantes presentes fueron: Mauro Hidalgo, Julian Gonzalez y Matias Lizarraga.
+Los integrantes presentes fueron: Mauro Hidalgo, Julian Gonzalez, Matias Lizarraga y Daniel Geier.

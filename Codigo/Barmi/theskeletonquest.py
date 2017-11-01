@@ -30,8 +30,8 @@ class Snow():
                      
 class BotonAudio(pygame.sprite.Sprite):
     def __init__(self,x,y):  
-        self.imagenon=pygame.image.load("ChelinsWorld/soundon.png").convert_alpha() 
-        self.imagenoff=pygame.image.load("ChelinsWorld/soundoff.png").convert_alpha() 
+        self.imagenon=pygame.image.load("mundopict/soundon.png").convert_alpha() 
+        self.imagenoff=pygame.image.load("mundopict/soundoff.png").convert_alpha() 
         self.estado="ON"
         self.imagen_actual=self.imagenon
         self.rect=  self.imagen_actual.get_rect()
@@ -55,8 +55,8 @@ class Imagenes(object):
 class Botonskill(pygame.sprite.Sprite):
     def __init__(self,x,y):  
 
-        self.imagensinpuntos=pygame.image.load("ChelinsWorld/skilloff.png")
-        self.imagenconpuntos=pygame.image.load("ChelinsWorld/skillon.png")
+        self.imagensinpuntos=pygame.image.load("mundopict/skilloff.png")
+        self.imagenconpuntos=pygame.image.load("mundopict/skillon.png")
         self.imagen=self.imagensinpuntos      
         self.rect= self.imagen.get_rect()
         self.rect.left=x
@@ -122,18 +122,18 @@ class Times(object):
 class Info(pygame.sprite.Sprite):
     def __init__(self,fps=0):
         self.listatexto=[]
-        self.iconlevel=pygame.image.load("ChelinsWorld/iconlevel1.png").convert_alpha() 
-        self.iconlevelup=pygame.image.load("ChelinsWorld/iconlevel.png").convert_alpha() 
-        self.fondo=pygame.image.load("ChelinsWorld/infofondo.png").convert_alpha() 
-        self.iconhp=pygame.image.load("ChelinsWorld/iconhp.png").convert_alpha()  
-        self.icondano=pygame.image.load("ChelinsWorld/icondano.png").convert_alpha()
-        self.iconmagic=pygame.image.load("ChelinsWorld/iconmagic.png").convert_alpha()
-        self.iconspeed=  pygame.image.load("ChelinsWorld/iconspeed.png").convert_alpha()
-        self.iconpot=pygame.image.load("ChelinsWorld/iconpot.png").convert_alpha()  
-        self.icongold=pygame.image.load("ChelinsWorld/icongold.png").convert_alpha()
-        self.iconskills=pygame.image.load("ChelinsWorld/skillon.png").convert_alpha()        
+        self.iconlevel=pygame.image.load("mundopict/iconlevel1.png").convert_alpha() 
+        self.iconlevelup=pygame.image.load("mundopict/iconlevel.png").convert_alpha() 
+        self.fondo=pygame.image.load("mundopict/infofondo.png").convert_alpha() 
+        self.iconhp=pygame.image.load("mundopict/iconhp.png").convert_alpha()  
+        self.icondano=pygame.image.load("mundopict/icondano.png").convert_alpha()
+        self.iconmagic=pygame.image.load("mundopict/iconmagic.png").convert_alpha()
+        self.iconspeed=  pygame.image.load("mundopict/iconspeed.png").convert_alpha()
+        self.iconpot=pygame.image.load("mundopict/iconpot.png").convert_alpha()  
+        self.icongold=pygame.image.load("mundopict/icongold.png").convert_alpha()
+        self.iconskills=pygame.image.load("mundopict/skillon.png").convert_alpha()        
         self.listaimagenes=[self.iconlevel,self.iconlevelup,self.iconhp,self.icondano,self.iconmagic,self.iconspeed ,self.iconpot,self.icongold,self.iconskills]  
-        self.botones=pygame.image.load("ChelinsWorld/botones.png").convert_alpha()
+        self.botones=pygame.image.load("mundopict/botones.png").convert_alpha()
         self.fps=pygame.font.SysFont("Arial", 14, True, False).render("0",0,(255,255,255))
        
     def update(self,pantalla,fps,player):
@@ -225,7 +225,7 @@ class Shop(Objeto):
             self.precio=100
         if self.tipo=="Pots":
             self.precio=300
-        self.sound=pygame.mixer.Sound("ChelinsWorld/level.wav")
+        self.sound=pygame.mixer.Sound("mundopict/level.wav")
     def comprar(self,jugador):
         if self.tipo=="Dano":
             jugador.dano+=5
@@ -247,11 +247,11 @@ class Gold(pygame.sprite.Sprite):
     def __init__(self,x=350,y=300,cantidad=100,inflate=False):
         self.x=x
         self.y=y
-        self.imagen=pygame.image.load("ChelinsWorld/gold.png").convert_alpha()
-        self.sound=pygame.mixer.Sound("ChelinsWorld/gold.wav")
+        self.imagen=pygame.image.load("mundopict/gold.png").convert_alpha()
+        self.sound=pygame.mixer.Sound("mundopict/gold.wav")
         self.cantidad=cantidad
         if self.cantidad>200:
-            self.imagen=pygame.image.load("ChelinsWorld/tesoro.png").convert_alpha()
+            self.imagen=pygame.image.load("mundopict/tesoro.png").convert_alpha()
         self.rect=self.imagen.get_rect()
         
         self.rect.left=self.x
@@ -503,8 +503,8 @@ class Boss(pygame.sprite.Sprite):
         self.xp=500
         self.human=False
         self.spawning=False
-        self.spawningimage=pygame.image.load("ChelinsWorld/aliinvocando.png").convert_alpha()
-        self.spawningsound=pygame.mixer.Sound("ChelinsWorld/spawn.wav")
+        self.spawningimage=pygame.image.load("mundopict/aliinvocando.png").convert_alpha()
+        self.spawningsound=pygame.mixer.Sound("mundopict/spawn.wav")
         self.tspawnbicho=0
         self.tspawnbichototal=150
         self.frozen=False
@@ -513,7 +513,7 @@ class Boss(pygame.sprite.Sprite):
         if self.hp<=0:
             if self.estavivo:
                 pygame.mixer.music.stop()
-                pygame.mixer.music.load("ChelinsWorld/victory.mid")
+                pygame.mixer.music.load("mundopict/victory.mid")
                 pygame.mixer.music.play()
                 listamonstro.insert(0,Teleporter(iportal,300,100))
             self.estavivo=False
@@ -635,8 +635,8 @@ class Aldeano(Monster):
         self.text=self.obtenertexto(text)
         self.textactive=textactive
         self.time=0
-        self.fondo=pygame.image.load("ChelinsWorld\\texto.png")
-        self.sound=pygame.mixer.Sound("ChelinsWorld/text.wav")
+        self.fondo=pygame.image.load("mundopict\\texto.png")
+        self.sound=pygame.mixer.Sound("mundopict/text.wav")
         self.sound.set_volume(1)
     def obtenertexto(self,text):
         if text:
@@ -793,7 +793,7 @@ class espada(pygame.sprite.Sprite):
                 pygame.draw.rect(superficie,(0,255,0),shop.rect)
                 self.destroy(lista,jugador)              
         for spell in lista:
-            if spell.tipo=="fireball" or spell.tipo=="hielo": return
+            if spell.tipo=="fireball": return
         self.imagen=self.imagenes[self.orientacion][self.numero_imagen]
         superficie.blit(self.imagen,self.rect)
     def destroy(self,lista,player):
@@ -802,55 +802,6 @@ class espada(pygame.sprite.Sprite):
                 player.estapegando=False                
             lista.remove(self)
 
-class Hielo(fireball):
-    def __init__(self,player):
-        fireball.__init__(self, player)
-        self.tipo="hielo"
-        self.imagenes=[[isnowballr,isnowballr2],[isnowballl,isnowballl2],[isnowballt,isnowballt2],[isnowballb,isnowballb2]]
-        self.sound=snowballsound
-    def update(self,superficie,lista,jugador,listamonster,listashop,attack,vx,vy,t):
-        self.delta+=self.velocidadtiempo
-        if self.delta%3==0:
-            self.imagen_numero=1
-        else: self.imagen_numero=0
-        jugador.estapegando=False       
-        if self.orientacion==0:self.vx=20
-        elif self.orientacion==1: self.vx=-20
-        elif self.orientacion==2: 
-            self.vy=-20
-            self.velocidadtiempo=2
-        elif self.orientacion==3: 
-            self.vy=20
-            self.velocidadtiempo=2
-        self.rect.move_ip(-vx+self.vx,-vy+self.vy,)
-        if self.delta>self.tiempototal:
-
-            self.destroy(lista,jugador)
-        for monster in listamonster:
-            if   monster.estavivo and monster.active and self.rect.colliderect(monster.rect)and t.t==1 and not monster.human:
-                monster.hp-=self.dano+(jugador.magic)/3
-                if not(monster.frozen): 
-                    monster.frozen=True
-                self.sound.play()
-                pygame.draw.rect(superficie,(250,0,0),monster.rect)
-                self.destroy(lista,jugador)
-            if monster.human and self.rect.colliderect(monster.rect):
-                monster.textactive=True
-                if  isinstance(monster,Teleporter):
-
-                    monster.teleport()
-                    self.destroy(lista, jugador)
-        for shop in listashop:
-            if self.rect.colliderect(shop.rect) and jugador.gold>=shop.precio:
-                jugador.gold-=shop.precio
-                shop.comprar(jugador)
-                shop.sound.play()
-                pygame.draw.rect(superficie,(0,255,0),shop.rect)
-                self.destroy(lista,jugador)              
-        self.imagen=self.imagenes[self.orientacion][self.imagen_numero]
-        superficie.blit(self.imagen,self.rect)
-
-
    
 
 class Player(pygame.sprite.Sprite):
@@ -858,7 +809,7 @@ class Player(pygame.sprite.Sprite):
         self.imagenes=[[imagen1,imagen2],[imagen1l,imagen2l],[imagen1t,imagen2t],[imagen1b,imagen2b]]
         self.imagenescasting=[icastingr,icastingl,icastingt,icastingb]
         self.imagenescastingacrono=[icastingacronor,icastingacronol,icastingacronot,icastingacronob]
-        self.imagendead=pygame.image.load("ChelinsWorld/dead.png").convert_alpha()        
+        self.imagendead=pygame.image.load("mundopict/dead.png").convert_alpha()        
         
         self.imagen=self.imagenes[3][0]
         self.rect=self.imagen.get_rect()
@@ -965,7 +916,7 @@ class Player(pygame.sprite.Sprite):
             self.pots-=1
             heal=self.hpmax/4+self.hpmax/2
             self.hp+=heal
-            pygame.mixer.Sound("ChelinsWorld/pot.wav").play()
+            pygame.mixer.Sound("mundopict/pot.wav").play()
             if self.hp>self.hpmax:
                 self.hp=self.hpmax
         self.lockpots()
@@ -975,14 +926,14 @@ class Player(pygame.sprite.Sprite):
         self.enablepots=True
 
     def setacrono(self):
-        imagen1=pygame.image.load("ChelinsWorld/acronor1.png").convert_alpha()
-        imagen2=pygame.image.load("ChelinsWorld/acronor2.png").convert_alpha()
-        imagen1l=pygame.image.load("ChelinsWorld/acronol1.png").convert_alpha()
-        imagen2l=pygame.image.load("ChelinsWorld/acronol2.png").convert_alpha()    
-        imagen1t=pygame.image.load("ChelinsWorld/acronot1.png").convert_alpha()
-        imagen2t=pygame.image.load("ChelinsWorld/acronot2.png").convert_alpha()
-        imagen1b=pygame.image.load("ChelinsWorld/acronob1.png").convert_alpha()
-        imagen2b=pygame.image.load("ChelinsWorld/acronob2.png").convert_alpha()
+        imagen1=pygame.image.load("mundopict/acronor1.png").convert_alpha()
+        imagen2=pygame.image.load("mundopict/acronor2.png").convert_alpha()
+        imagen1l=pygame.image.load("mundopict/acronol1.png").convert_alpha()
+        imagen2l=pygame.image.load("mundopict/acronol2.png").convert_alpha()    
+        imagen1t=pygame.image.load("mundopict/acronot1.png").convert_alpha()
+        imagen2t=pygame.image.load("mundopict/acronot2.png").convert_alpha()
+        imagen1b=pygame.image.load("mundopict/acronob1.png").convert_alpha()
+        imagen2b=pygame.image.load("mundopict/acronob2.png").convert_alpha()
         self.imagenes=[[imagen1,imagen2],[imagen1l,imagen2l],[imagen1t,imagen2t],[imagen1b,imagen2b]]
         self.imagenescasting=self.imagenescastingacrono
 class Fondo(pygame.sprite.Sprite):
@@ -1051,13 +1002,13 @@ def loadmusic():
     pygame.mixer.quit()
     pygame.mixer.init()
     listamusic=[
-    "ChelinsWorld/melodyfire.mid"
-    ,"ChelinsWorld/melodyrpg.mid"
-    ,"ChelinsWorld/melodytime.mid"
-    ,"ChelinsWorld/melody2.mid"
-    ,"ChelinsWorld/castle2.mid"
-    ,"ChelinsWorld/castle3.mid"
-    ,"ChelinsWorld/castle4.mid"
+    "mundopict/melodyfire.mid"
+    ,"mundopict/melodyrpg.mid"
+    ,"mundopict/melodytime.mid"
+    ,"mundopict/melody2.mid"
+    ,"mundopict/castle2.mid"
+    ,"mundopict/castle3.mid"
+    ,"mundopict/castle4.mid"
     ]
     longitud=  len(listamusic) 
     r=random.randrange(longitud)  
@@ -1127,11 +1078,11 @@ def bossfight(player1):
     pygame.init()
     pantalla=pygame.display.set_mode((800,600))
     pygame.display.set_caption("::: The Skeleton Quest RPG v0.7 :::")
-    pygame.display.set_icon(pygame.image.load("ChelinsWorld/iconlevel1.png").convert_alpha())
-    pygame.mixer.music.load("ChelinsWorld/melodyboss.mid")
+    pygame.display.set_icon(pygame.image.load("mundopict/iconlevel1.png").convert_alpha())
+    pygame.mixer.music.load("mundopict/melodyboss.mid")
     reloj1= pygame.time.Clock()
     botonaudio=BotonAudio(760,5)
-    fondo1=Fondo(pygame.image.load("ChelinsWorld/fondoboss.gif"),-250,-250)
+    fondo1=Fondo(pygame.image.load("mundopict/fondoboss.gif"),-250,-250)
     cursor1=cursor()
     botonhp=Botonskill(130,50)
     botondamage=Botonskill(130,75)
@@ -1197,12 +1148,7 @@ def bossfight(player1):
                         vy=-player1.velocidad
                     if event.key == pygame.K_DOWN:
                         downsigueapretada=True
-                        vy=player1.velocidad
-                    if event.key == pygame.K_d:
-                        auxfireball=False
-                        for spells in listaechizos:
-                            if spells.tipo=="hielo": auxfireball=True
-                        if not(auxfireball):listaechizos.append(Hielo(player1))                        
+                        vy=player1.velocidad                        
                     if event.key == pygame.K_s:
                         auxfireball=False
                         for spells in listaechizos:
@@ -1210,7 +1156,7 @@ def bossfight(player1):
                         if not(auxfireball):listaechizos.append(fireball(player1))                       
                     if event.key == pygame.K_a:
                         listaechizos.append(espada(player1))      
-                    if event.key ==pygame.K_f:
+                    if event.key ==pygame.K_d:
                         player1.usepot()
                 if event.type == pygame.KEYUP:
                     if event.key == pygame.K_LEFT:
@@ -1229,7 +1175,7 @@ def bossfight(player1):
                         downsigueapretada=False
                         if upsigueapretada:vy=-player1.velocidad
                         else:vy=0                    
-                    if event.key ==pygame.K_f:
+                    if event.key ==pygame.K_d:
                         player1.unlockpots()
                     if event.key==pygame.K_F1:
                         t.tde40=0
@@ -1250,7 +1196,7 @@ def bossfight(player1):
             vx,vy=0,0
             pygame.mixer.music.stop()
             pantalla.blit(igameover,(200,50))
-            player1.imagen=pygame.image.load("ChelinsWorld/dead.png").convert_alpha()
+            player1.imagen=pygame.image.load("mundopict/dead.png").convert_alpha()
 
         #for wall in listawalls:
          # pygame.draw.rect(pantalla,(255,0,0),wall)
@@ -1285,11 +1231,11 @@ def ice(player1):
     pygame.init()
     pantalla=pygame.display.set_mode((800,600))
     pygame.display.set_caption("::: The Skeleton Quest RPG v0.7 :::")
-    pygame.display.set_icon(pygame.image.load("ChelinsWorld/iconlevel1.png").convert_alpha())
+    pygame.display.set_icon(pygame.image.load("mundopict/iconlevel1.png").convert_alpha())
     loadmusic()
     reloj1= pygame.time.Clock()
     botonaudio=BotonAudio(760,5)
-    fondo1=Fondo(pygame.image.load("ChelinsWorld/ice.png"),-150,0)
+    fondo1=Fondo(pygame.image.load("mundopict/ice.png"),-150,0)
     cursor1=cursor()
     nieve1=Snow()
     botonhp=Botonskill(130,50)
@@ -1363,12 +1309,7 @@ def ice(player1):
                         vy=-player1.velocidad
                     if event.key == pygame.K_DOWN:
                         downsigueapretada=True
-                        vy=player1.velocidad
-                    if event.key == pygame.K_d:
-                        auxfireball=False
-                        for spells in listaechizos:
-                            if spells.tipo=="hielo": auxfireball=True
-                        if not(auxfireball):listaechizos.append(Hielo(player1))                        
+                        vy=player1.velocidad                       
                     if event.key == pygame.K_s:
                         auxfireball=False
                         for spells in listaechizos:
@@ -1376,7 +1317,7 @@ def ice(player1):
                         if not(auxfireball):listaechizos.append(fireball(player1))                       
                     if event.key == pygame.K_a:
                         listaechizos.append(espada(player1))      
-                    if event.key ==pygame.K_f:
+                    if event.key ==pygame.K_d:
                         player1.usepot()
                 if event.type == pygame.KEYUP:
                     if event.key == pygame.K_LEFT:
@@ -1395,7 +1336,7 @@ def ice(player1):
                         downsigueapretada=False
                         if upsigueapretada:vy=-player1.velocidad
                         else:vy=0                    
-                    if event.key ==pygame.K_f:
+                    if event.key ==pygame.K_d:
                         player1.unlockpots()
                     if event.key==pygame.K_F1:
                         t.tde40=0
@@ -1416,7 +1357,7 @@ def ice(player1):
             vx,vy=0,0
             pygame.mixer.music.stop()
             pantalla.blit(igameover,(200,50))
-            player1.imagen=pygame.image.load("ChelinsWorld/dead.png").convert_alpha()
+            player1.imagen=pygame.image.load("mundopict/dead.png").convert_alpha()
 
         #for wall in listawalls:
          # pygame.draw.rect(pantalla,(255,0,0),wall)
@@ -1452,19 +1393,19 @@ def menu():
 
     pantalla=pygame.display.set_mode((800,600))
     pygame.display.set_caption("Barmith")
-    pygame.display.set_icon(pygame.image.load("ChelinsWorld/iconlevel1.png").convert_alpha()) 
+    pygame.display.set_icon(pygame.image.load("mundopict/iconlevel1.png").convert_alpha()) 
     relojmenu= pygame.time.Clock()
-    title=pygame.image.load("ChelinsWorld/title.png").convert_alpha()
-    newgame=Boton(pygame.image.load("ChelinsWorld/newgame1.png").convert_alpha(),
-                  pygame.image.load("ChelinsWorld/newgame2.png").convert_alpha(),250,200)
+    title=pygame.image.load("mundopict/title.png").convert_alpha()
+    newgame=Boton(pygame.image.load("mundopict/newgame1.png").convert_alpha(),
+                  pygame.image.load("mundopict/newgame2.png").convert_alpha(),250,200)
     
-    loadgame=Boton(pygame.image.load("ChelinsWorld/loadgame1.png").convert_alpha(),
-                  pygame.image.load("ChelinsWorld/loadgame2.png").convert_alpha(),250,400)
+    loadgame=Boton(pygame.image.load("mundopict/loadgame1.png").convert_alpha(),
+                  pygame.image.load("mundopict/loadgame2.png").convert_alpha(),250,400)
     
     c1=cursor()
     loadgamebool=None
-    #intro=pygame.movie.Movie("ChelinsWorld/intro.mpg")
-    #pygame.mixer.music.load("ChelinsWorld/introsound.mp3")
+    #intro=pygame.movie.Movie("mundopict/intro.mpg")
+    #pygame.mixer.music.load("mundopict/introsound.mp3")
     #pygame.mixer.music.play()
     #intro.play()
     
@@ -1479,7 +1420,7 @@ def menu():
                # pygame.mixer.music.stop()
                 #intro.stop()
                 
-    pygame.mixer.music.load("ChelinsWorld/melody2.mid")
+    pygame.mixer.music.load("mundopict/melody2.mid")
     pygame.mixer.music.play()
     while True:
         for event in pygame.event.get():
@@ -1509,7 +1450,7 @@ def main(cargar=False):
     pygame.init()
     pantalla=pygame.display.set_mode((800,600))
     pygame.display.set_caption("Barmith")
-    pygame.display.set_icon(pygame.image.load("ChelinsWorld/iconlevel1.png").convert_alpha())
+    pygame.display.set_icon(pygame.image.load("mundopict/iconlevel1.png").convert_alpha())
     loadmusic()
     #aver q onda
 
@@ -1522,7 +1463,7 @@ def main(cargar=False):
     reloj1= pygame.time.Clock()
     botonaudio=BotonAudio(760,5)
   
-    fondo1=Fondo(pygame.image.load("ChelinsWorld/fondo2.gif"))
+    fondo1=Fondo(pygame.image.load("mundopict/fondo2.gif"))
     cursor1=cursor()
     botonhp=Botonskill(130,50)
     botondamage=Botonskill(130,75)
@@ -1706,20 +1647,16 @@ def main(cargar=False):
                     if event.key == pygame.K_DOWN:
                         downsigueapretada=True
                         vy=player1.velocidad
-                    if event.key == pygame.K_d:
-                        auxfireball=False
-                        for spells in listaechizos:
-                            if spells.tipo=="hielo" or spells.tipo=="fireball": auxfireball=True
-                        if not(auxfireball):listaechizos.append(Hielo(player1))                     
+                        
                     if event.key == pygame.K_a:
                         listaechizos.append(espada(player1)) 
                     if event.key == pygame.K_s:
                         auxfireball=False
                         for spells in listaechizos:
-                            if spells.tipo=="fireball" or spells.tipo=="hielo": auxfireball=True
+                            if spells.tipo=="fireball": auxfireball=True
                         if not(auxfireball):listaechizos.append(fireball(player1))      
 
-                    if event.key ==pygame.K_f:
+                    if event.key ==pygame.K_d:
                         player1.usepot()
                     if event.key == pygame.K_F7:
                         player1.levelup(pantalla, levelup, t)
@@ -1796,7 +1733,7 @@ def main(cargar=False):
             if t.gameover==False:
                 #gameoversound.play()
                 pygame.mixer.music.stop()
-                pygame.mixer.music.load("ChelinsWorld/gameover.wav")
+                pygame.mixer.music.load("mundopict/gameover.wav")
                 pygame.mixer.music.play()                
                 t.gameover=True
             vx,vy=0,0

@@ -1451,7 +1451,7 @@ def menu():
     pygame.init()
 
     pantalla=pygame.display.set_mode((800,600))
-    pygame.display.set_caption("::: The Skeleton Quest RPG v0.7:::")
+    pygame.display.set_caption("Barmith")
     pygame.display.set_icon(pygame.image.load("ChelinsWorld/iconlevel1.png").convert_alpha()) 
     relojmenu= pygame.time.Clock()
     title=pygame.image.load("ChelinsWorld/title.png").convert_alpha()
@@ -1508,7 +1508,7 @@ def main(cargar=False):
 
     pygame.init()
     pantalla=pygame.display.set_mode((800,600))
-    pygame.display.set_caption("::: The Skeleton Quest RPG v0.7 :::")
+    pygame.display.set_caption("Barmith")
     pygame.display.set_icon(pygame.image.load("ChelinsWorld/iconlevel1.png").convert_alpha())
     loadmusic()
     #aver q onda
@@ -1538,13 +1538,12 @@ def main(cargar=False):
     
     leftsigueapretada,rightsigueapretada,upsigueapretada,downsigueapretada=False,False,False,False
     listamonster=[Teleporter(iportal),Teleporter_on_contact(ientradaice,4191,44),
-                  Aldeano(imajor,590,110,0,80,0,1,"Hey! The shops are due     south of here")
-                  ,Aldeano(ianimacion,243,296,0,50,0,1,"Use \" A \" to attack and to talk, BRO!!",True)
-                  ,Aldeano(ialdeano,610,418,1,150,0,1,"Use f1 to save the current game, or you will lose it")
-                  ,Aldeano(iimpaciente,281,571,0,0,0,1,"I heard that with \"F\" you can use potions...")
-                  ,Aldeano(ianimacion,519,1107,1,250,0,1,"Use \" S\" to cast fireball or \" D\" for iceball")
-                  ,Aldeano(iguardia,1006,696,0,80,0,1," Beware, monsters live     across the bridge... ")
-                  ,Aldeano(ianciano,368,946,0,80,0,1,"I hate music, You can stop the music by pressing \" M\"")
+                 
+                  Aldeano(ianimacion,243,296,0,50,0,1,"Utiliza A para atacar y como boton de accion!",True)
+                  ,Aldeano(ialdeano,610,418,1,150,0,1,"Usa F1 para guardar tu partida")
+                  ,Aldeano(iimpaciente,281,571,0,0,0,1,"Usa las pociones con la F")
+                  ,Aldeano(ianimacion,519,1107,1,250,0,1,"Utiliza S para disparar!")
+                  ,Aldeano(ianciano,368,946,0,80,0,1,"Odio esta musica, puedes quitarla apretando M")
                   ,Monster(iskeleton,1170,144,0,15),Monster(iskeleton,1126,278,1,50)
                   ,Monster(iskeleton,1156,1033,1,50),Monster(iskeleton,1168,1220,0,15)
                   ,Monster(iskeleton,1552,588,0,10),Monster(iskeleton,1740,717,1,20)
@@ -1594,7 +1593,7 @@ def main(cargar=False):
                  ,Monsterfollower(iskeletongreen,4052,1242,1,1,2,400,4)
                  ,Monsterfollower(iskeletongreen,4132,1201,1,1,2,400,4)
                  ,Monsterfollower(iskeletongreen,4186,1251,1,1,2,400,4)
-                 #cangrejois
+                 #cangrejos
                  ,Monsterfollower(icangrejo,-443,-28,1,1,4,2000,4,22000)
                  ,Monsterfollower(icangrejo,-554,434,1,1,4,2000,4,15000)
                  ,Monsterfollower(icangrejo,-886,444,1,1,4,2000,4,15000)
@@ -1618,7 +1617,7 @@ def main(cargar=False):
     listaobjetos=[Objeto(icasa2,121,-131),Objeto(icasa1,669,-185)
                   ,Objeto(icasa1,363,355),Objeto(icasa1,705,434)
                   ,Objeto(icasa2,238,676),Shop(ishop,217,1034,"Dano"),
-                  Shop(ishop2,217,1230,"Vida"),Shop(ishop3,743,1045,"Pots"),
+                  Shop(ishop2,217,1230,"Vida"),Shop(ishop3,743,1045,"Pociones"),
                   Shop(ishop4,756,826,"Heal"),Shop(ishop5,753,1245,"Velocidad"),
                   Shop(ishop6,460,1307,"Magic")
                   ]

@@ -800,9 +800,7 @@ class espada(pygame.sprite.Sprite):
         if self in lista:
             if len(lista)<=1:
                 player.estapegando=False                
-            lista.remove(self)
-
-   
+            lista.remove(self)   
 
 class Player(pygame.sprite.Sprite):
     def __init__(self,imagen1,imagen2,imagen1l,imagen2l,imagen1t,imagen2t,imagen1b,imagen2b):
@@ -1148,7 +1146,8 @@ def bossfight(player1):
                         vy=-player1.velocidad
                     if event.key == pygame.K_DOWN:
                         downsigueapretada=True
-                        vy=player1.velocidad                        
+                        vy=player1.velocidad
+                        
                     if event.key == pygame.K_s:
                         auxfireball=False
                         for spells in listaechizos:
@@ -1175,7 +1174,7 @@ def bossfight(player1):
                         downsigueapretada=False
                         if upsigueapretada:vy=-player1.velocidad
                         else:vy=0                    
-                    if event.key ==pygame.K_d:
+                    if event.key ==pygame.K_f:
                         player1.unlockpots()
                     if event.key==pygame.K_F1:
                         t.tde40=0
@@ -1309,7 +1308,8 @@ def ice(player1):
                         vy=-player1.velocidad
                     if event.key == pygame.K_DOWN:
                         downsigueapretada=True
-                        vy=player1.velocidad                       
+                        vy=player1.velocidad
+                       
                     if event.key == pygame.K_s:
                         auxfireball=False
                         for spells in listaechizos:
@@ -1336,7 +1336,7 @@ def ice(player1):
                         downsigueapretada=False
                         if upsigueapretada:vy=-player1.velocidad
                         else:vy=0                    
-                    if event.key ==pygame.K_d:
+                    if event.key ==pygame.K_f:
                         player1.unlockpots()
                     if event.key==pygame.K_F1:
                         t.tde40=0
@@ -1463,7 +1463,7 @@ def main(cargar=False):
     reloj1= pygame.time.Clock()
     botonaudio=BotonAudio(760,5)
   
-    fondo1=Fondo(pygame.image.load("mundopict/fondo2.gif"))
+    fondo1=Fondo(pygame.image.load("mundopict/fondo2.png"))
     cursor1=cursor()
     botonhp=Botonskill(130,50)
     botondamage=Botonskill(130,75)
@@ -1647,7 +1647,7 @@ def main(cargar=False):
                     if event.key == pygame.K_DOWN:
                         downsigueapretada=True
                         vy=player1.velocidad
-                        
+                     
                     if event.key == pygame.K_a:
                         listaechizos.append(espada(player1)) 
                     if event.key == pygame.K_s:
@@ -1678,7 +1678,7 @@ def main(cargar=False):
                         downsigueapretada=False
                         if upsigueapretada:vy=-player1.velocidad
                         else:vy=0                    
-                    if event.key ==pygame.K_f:
+                    if event.key ==pygame.K_d:
                         player1.unlockpots()
                     if event.key==pygame.K_F1:
                         if (player1.estavivo):

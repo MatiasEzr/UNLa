@@ -1,8 +1,7 @@
-En el dia 13/10/17 se decidio de forma unanime excluir al compañero Daniel Geier del trabajo practico por falta de participacion y entusiasmo por el tema.
-De la misma forma se puso en comun todo lo que trabajamos durante el cuatrimestre para poder tener el juego terminado al finalizar la cursada. Falta por hacer:
+En el dia 13/10/17 se realizo una puesta en comun sobre todo lo que trabajamos durante el cuatrimestre para poder tener el juego terminado al finalizar la cursada. Falta por hacer:
 -Editar mapa de juego
 -Incluir NPC personalizados
 -Incluir personaje principal
--Añadir colisiones y tipos de daño
+-AÃ±adir colisiones y tipos de daÃ±o
 Para finalizar, se discutieron los factores mas importantes de la documentacion tecnica del juego para luego ser entregados.
-Los integrantes presentes fueron: Mauro Hidalgo, Julian Gonzalez y Matias Lizarraga.
+Los integrantes presentes fueron: Mauro Hidalgo, Julian Gonzalez, Matias Lizarraga y Daniel Geier.

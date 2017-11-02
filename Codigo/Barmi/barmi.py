@@ -1538,7 +1538,12 @@ def main(cargar=False):
                  ,Monsterfollower(iskeletongreen, -810,840,1,1,3,700,4)
                  ,Monsterfollower(iskeletongreen,-810,750,1,1,3,700,4)
                  ,Monsterfollower(iskeletongreen, -870,840,1,1,3,700,4)
-                 ,Monsterfollower(iskeletongreen,-870,750,1,1,3,700,4)]
+                 ,Monsterfollower(iskeletongreen,-870,750,1,1,3,700,4)
+                ,Monsterfollower(iOrco,-4201,25,1,1,5,3000,5,22000,350)
+                ,Monsterfollower(iOrco,-913,1338,1,1,5,3000,5,22000,350)
+                ,Monsterfollower(iOrco,-739,63,1,1,5,3000,5,22000,350)
+                ,Monsterfollower(iOrco,-330,290,1,1,5,3000,5,22000,350)
+                  ]
                  
     listaobjetos=[Shop(ishop,217,1034,"Dano meele"),
                   Shop(ishop2,217,1230,"Vida"),Shop(ishop3,743,1045,"Pociones"),

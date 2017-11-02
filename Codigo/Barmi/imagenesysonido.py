@@ -102,6 +102,23 @@ ianimacion.lista=[[ianimacion.ianimacionr1,ianimacion.ianimacionr2],
                     [ ianimacion.ianimaciont1,ianimacion.ianimaciont2]]
 
 
+iOrco=Imagenes()
+iOrco.iOrcor1=pygame.image.load("mundopict/Orcor1.png").convert_alpha()
+iOrco.iOrcol1=pygame.image.load("mundopict/Orcol1.png").convert_alpha()
+iOrco.iOrcob1=pygame.image.load("mundopict/Orcob1.png").convert_alpha()
+iOrco.iOrcot1=pygame.image.load("mundopict/Orcot1.png").convert_alpha()    
+iOrco.iOrcor2=pygame.image.load("mundopict/Orcor2.png").convert_alpha()
+iOrco.iOrcol2=pygame.image.load("mundopict/Orcol2.png").convert_alpha()
+iOrco.iOrcob2=pygame.image.load("mundopict/Orcob2.png").convert_alpha()
+iOrco.iOrcot2=pygame.image.load("mundopict/Orcot2.png").convert_alpha()   
+iOrco.lista=[[iOrco.iOrcor1,iOrco.iOrcor2],
+                    [iOrco.iOrcol1,iOrco.iOrcol2],
+                    [iOrco.iOrcob1,iOrco.iOrcob2],
+                    [ iOrco.iOrcot1,iOrco.iOrcot2]]
+
+
+
+
 
 iskeletongreen=Imagenes()
 iskeletongreen.iskeletonr1=pygame.image.load("mundopict/skeletongreenr1.png").convert_alpha()

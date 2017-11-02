@@ -686,12 +686,12 @@ class Teleporter_on_contact(Aldeano):
     def teleport(self):
         self.teleporton=True  
                     
-class fireball(pygame.sprite.Sprite):
+class disparo(pygame.sprite.Sprite):
     def __init__(self,player):
         player.casting=True
         
-        self.tipo="fireball"
-        self.imagenes=[[ifireballr,ifireballr2],[ifireballl,ifireballl2],[ifireballt,ifireballt2],[ifireballb,ifireballb2]]
+        self.tipo="disparo"
+        self.imagenes=[[idisparor,idisparor2],[idisparol,idisparol2],[idisparot,idisparot2],[idisparob,idisparob2]]
         self.imagen_numero=0
         self.imagen=self.imagenes[player.orientacion][self.imagen_numero]
         self.rect=self.imagen.get_rect()
@@ -703,7 +703,7 @@ class fireball(pygame.sprite.Sprite):
         self.dano=10
         self.orientacion=player.orientacion
         self.vx,self.vy=0,0
-        self.sound=fireballsound
+        self.sound=disparosound
     def update(self,superficie,lista,jugador,listamonster,listashop,attack,vx,vy,t):
         self.delta+=self.velocidadtiempo
         if self.delta%3==0:
@@ -793,7 +793,7 @@ class espada(pygame.sprite.Sprite):
                 pygame.draw.rect(superficie,(0,255,0),shop.rect)
                 self.destroy(lista,jugador)              
         for spell in lista:
-            if spell.tipo=="fireball": return
+            if spell.tipo=="disparo": return
         self.imagen=self.imagenes[self.orientacion][self.numero_imagen]
         superficie.blit(self.imagen,self.rect)
     def destroy(self,lista,player):
@@ -1021,7 +1021,7 @@ def loadmusic():
     
     
     
-def movercosas(player,fondo,pantalla,listamonster,listaechizos,
+def movercosas(player,fondo,pantalla,listamonster,listahechizos,
                listaobjetos,listawalls,listagold,vx,vy,t,attack,hited,levelup):
         velocidad=7
         colision=False
@@ -1064,9 +1064,9 @@ def movercosas(player,fondo,pantalla,listamonster,listaechizos,
         for gold in listagold:
             gold.update(pantalla,monstervx,monstervy)
         player.update(listamonster,listagold,pantalla,t,hited,levelup)
-        for echizo in listaechizos:
-            if isinstance (echizo,fireball):echizo.update(pantalla,listaechizos,player,listamonster,listashop,attack,monstervx,monstervy,t)
-            else: echizo.update(pantalla,listaechizos,player,listamonster,listashop,attack,t)
+        for echizo in listahechizos:
+            if isinstance (echizo,disparo):echizo.update(pantalla,listahechizos,player,listamonster,listashop,attack,monstervx,monstervy,t)
+            else: echizo.update(pantalla,listahechizos,player,listamonster,listashop,attack,t)
          
 
 
@@ -1091,7 +1091,7 @@ def bossfight(player1):
     vx,vy=0,0
     velocidad=8
     t= Times()
-    listaechizos=[]
+    listahechizos=[]
     listamonster=[ Boss(iali,1100,400,random.randrange(2, 3),20000,4)]
     listagold=[]
     listaobjetos=[]
@@ -1149,12 +1149,12 @@ def bossfight(player1):
                         vy=player1.velocidad
                         
                     if event.key == pygame.K_s:
-                        auxfireball=False
-                        for spells in listaechizos:
-                            if spells.tipo=="fireball": auxfireball=True
-                        if not(auxfireball):listaechizos.append(fireball(player1))                       
+                        auxdisparo=False
+                        for spells in listahechizos:
+                            if spells.tipo=="disparo": auxdisparo=True
+                        if not(auxdisparo):listahechizos.append(disparo(player1))                       
                     if event.key == pygame.K_a:
-                        listaechizos.append(espada(player1))      
+                        listahechizos.append(espada(player1))      
                     if event.key ==pygame.K_d:
                         player1.usepot()
                 if event.type == pygame.KEYUP:
@@ -1185,7 +1185,7 @@ def bossfight(player1):
 
         pantalla.fill((255,255,255))
         player1.mover(vx/1000.0, vy/1000.0) 
-        movercosas(player1,fondo1,pantalla,listamonster,listaechizos,
+        movercosas(player1,fondo1,pantalla,listamonster,listahechizos,
                listaobjetos,listawalls,listagold,vx,vy,t,attack,hited,levelup)                  
         t.update_times()     
         if player1.hp<=0:
@@ -1246,7 +1246,7 @@ def ice(player1):
     vx,vy=0,0
     velocidad=8
     t= Times()
-    listaechizos=[]
+    listahechizos=[]
     listamonster=[Teleporter_on_contact(ientradaice,250,200)
                   ,Monsterfollower(ifuryorc,1000,200,1,1,5,5000,5,22000,350)
                   ,Monsterfollower(ifuryorc,532,1031,1,1,5,5000,5,22000,350)
@@ -1311,12 +1311,12 @@ def ice(player1):
                         vy=player1.velocidad
                        
                     if event.key == pygame.K_s:
-                        auxfireball=False
-                        for spells in listaechizos:
-                            if spells.tipo=="fireball": auxfireball=True
-                        if not(auxfireball):listaechizos.append(fireball(player1))                       
+                        auxdisparo=False
+                        for spells in listahechizos:
+                            if spells.tipo=="disparo": auxdisparo=True
+                        if not(auxdisparo):listahechizos.append(disparo(player1))                       
                     if event.key == pygame.K_a:
-                        listaechizos.append(espada(player1))      
+                        listahechizos.append(espada(player1))      
                     if event.key ==pygame.K_d:
                         player1.usepot()
                 if event.type == pygame.KEYUP:
@@ -1347,7 +1347,7 @@ def ice(player1):
 
         pantalla.fill((191,255,255))
         player1.mover(vx/1000.0, vy/1000.0) 
-        movercosas(player1,fondo1,pantalla,listamonster,listaechizos,
+        movercosas(player1,fondo1,pantalla,listamonster,listahechizos,
                listaobjetos,listawalls,listagold,vx,vy,t,attack,hited,levelup)                  
         t.update_times()     
         if player1.hp<=0:
@@ -1475,14 +1475,14 @@ def main(cargar=False):
     vx,vy=0,0
     velocidad=8
     t= Times()
-    listaechizos=[]
+    listahechizos=[]
     
     leftsigueapretada,rightsigueapretada,upsigueapretada,downsigueapretada=False,False,False,False
     listamonster=[Teleporter(iportal),Teleporter_on_contact(ientradaice,4191,44),
                  
                   Aldeano(ianimacion,243,296,0,50,0,1,"Utiliza A para atacar y como boton de accion!",True)
                   ,Aldeano(ialdeano,610,418,1,150,0,1,"Usa F1 para guardar tu partida")
-                  ,Aldeano(iimpaciente,281,571,0,0,0,1,"Usa las pociones con la F")
+                  ,Aldeano(ivegeta,281,571,0,0,0,1,"Usa las pociones con la F")
                   ,Aldeano(ianimacion,519,1107,1,250,0,1,"Utiliza S para disparar!")
                   ,Aldeano(ianciano,368,946,0,80,0,1,"Odio esta musica, puedes quitarla apretando M")
                   ,Monster(iskeleton,1170,144,0,15),Monster(iskeleton,1126,278,1,50)
@@ -1534,11 +1534,11 @@ def main(cargar=False):
                  ,Monsterfollower(iskeletongreen,4052,1242,1,1,2,400,4)
                  ,Monsterfollower(iskeletongreen,4132,1201,1,1,2,400,4)
                  ,Monsterfollower(iskeletongreen,4186,1251,1,1,2,400,4)
-                 #cangrejos
-                 ,Monsterfollower(icangrejo,-443,-28,1,1,4,2000,4,22000)
-                 ,Monsterfollower(icangrejo,-554,434,1,1,4,2000,4,15000)
-                 ,Monsterfollower(icangrejo,-886,444,1,1,4,2000,4,15000)
-                 ,Monsterfollower(icangrejo,-443,1417,1,1,4,2000,4,15000)
+                 #marioperonistas
+                 ,Monsterfollower(imarioperonista,-443,-28,1,1,4,2000,4,22000)
+                 ,Monsterfollower(imarioperonista,-554,434,1,1,4,2000,4,15000)
+                 ,Monsterfollower(imarioperonista,-886,444,1,1,4,2000,4,15000)
+                 ,Monsterfollower(imarioperonista,-443,1417,1,1,4,2000,4,15000)
                  ,Monsterfollower(iskeletonred,-601,1161,1,1,7,3000,7,32000,200)
                  ,Monsterfollower(iskeletonred,-891,0,1,1,7,3000,7,22000,200)
                 
@@ -1647,12 +1647,12 @@ def main(cargar=False):
                         vy=player1.velocidad
                      
                     if event.key == pygame.K_a:
-                        listaechizos.append(espada(player1)) 
+                        listahechizos.append(espada(player1)) 
                     if event.key == pygame.K_s:
-                        auxfireball=False
-                        for spells in listaechizos:
-                            if spells.tipo=="fireball": auxfireball=True
-                        if not(auxfireball):listaechizos.append(fireball(player1))      
+                        auxdisparo=False
+                        for spells in listahechizos:
+                            if spells.tipo=="disparo": auxdisparo=True
+                        if not(auxdisparo):listahechizos.append(disparo(player1))      
 
                     if event.key ==pygame.K_d:
                         player1.usepot()
@@ -1690,7 +1690,7 @@ def main(cargar=False):
         pantalla.fill((0,0,170))
         player1.mover(vx/1000.0, vy/1000.0)           
         t.update_times()     
-        movercosas(player1,fondo1,pantalla,listamonster,listaechizos,
+        movercosas(player1,fondo1,pantalla,listamonster,listahechizos,
                listaobjetos,listawalls,listagold,vx,vy,t,attack,hited,levelup) 
         
         #teleportar??
@@ -1711,7 +1711,7 @@ def main(cargar=False):
                 return True
         if listamonster[1].teleporton:
             listamonster[1].teleporton=False
-            movercosas(player1,fondo1,pantalla,listamonster,listaechizos,
+            movercosas(player1,fondo1,pantalla,listamonster,listahechizos,
                listaobjetos,listawalls,listagold,-3*vx,-3*vy,t,attack,hited,levelup)             
             leftsigueapretada,rightsigueapretada,upsigueapretada,downsigueapretada=False,False,False,False
             vx,vy=0,0

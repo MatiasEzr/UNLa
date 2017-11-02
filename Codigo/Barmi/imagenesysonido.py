@@ -10,10 +10,9 @@ attack.set_volume(0.4)
 hited=pygame.mixer.Sound("mundopict/hited.wav")
 levelup=pygame.mixer.Sound("mundopict/levelup.wav")
 gameoversound=pygame.mixer.Sound("mundopict/gameover.wav") 
-fireballsound=pygame.mixer.Sound("mundopict/fireball.wav")
-fireballsound.set_volume(0.3)
-snowballsound=pygame.mixer.Sound("mundopict/snowball.wav")
-snowballsound.set_volume(0.3)
+disparosound=pygame.mixer.Sound("mundopict/disparo.wav")
+disparosound.set_volume(0.6)
+
 
 
 imagen1=pygame.image.load("mundopict/knightr1.png").convert_alpha()
@@ -33,11 +32,11 @@ ianciano.iancianol2=pygame.image.load("mundopict/ancianol2.png").convert_alpha()
 ianciano.lista=[[ianciano.iancianor1,ianciano.iancianor2],[ianciano.iancianol1,ianciano.iancianol2],
                 [],[]]
 
-iimpaciente= Imagenes()
-iimpaciente.iimpaciente1=pygame.image.load("mundopict/impaciente1.png").convert_alpha()
-iimpaciente.iimpaciente2=pygame.image.load("mundopict/impaciente2.png").convert_alpha()
+ivegeta= Imagenes()
+ivegeta.ivegeta1=pygame.image.load("mundopict/vegeta1.png").convert_alpha()
+ivegeta.ivegeta2=pygame.image.load("mundopict/vegeta2.png").convert_alpha()
 
-iimpaciente.lista=[[iimpaciente.iimpaciente1,iimpaciente.iimpaciente2],[iimpaciente.iimpaciente1,iimpaciente.iimpaciente2],
+ivegeta.lista=[[ivegeta.ivegeta1,ivegeta.ivegeta2],[ivegeta.ivegeta1,ivegeta.ivegeta2],
                 [],[]]
 
 
@@ -80,12 +79,12 @@ ialdeano.ialdeanot2=pygame.image.load("mundopict/aldeanot2.png").convert_alpha()
 ialdeano.lista=[[ialdeano.ialdeanob1,ialdeano.ialdeanob2],[],[ialdeano.ialdeanob1,ialdeano.ialdeanob2],[ialdeano.ialdeanot1,ialdeano.ialdeanot2]
                 ]  
 
-icangrejo= Imagenes()
-icangrejo.icangrejob1=pygame.image.load("mundopict/cangrejob1.png").convert_alpha()
-icangrejo.icangrejob2=pygame.image.load("mundopict/cangrejob2.png").convert_alpha()
-icangrejo.icangrejot1=pygame.image.load("mundopict/cangrejob1.png").convert_alpha()
-icangrejo.icangrejot2=pygame.image.load("mundopict/cangrejob2.png").convert_alpha()
-icangrejo.lista=[[icangrejo.icangrejob1,icangrejo.icangrejob2],[],[icangrejo.icangrejob1,icangrejo.icangrejob2],[icangrejo.icangrejot1,icangrejo.icangrejot2]
+imarioperonista= Imagenes()
+imarioperonista.imarioperonistab1=pygame.image.load("mundopict/marioperonistab1.png").convert_alpha()
+imarioperonista.imarioperonistab2=pygame.image.load("mundopict/marioperonistab2.png").convert_alpha()
+imarioperonista.imarioperonistat1=pygame.image.load("mundopict/marioperonistab1.png").convert_alpha()
+imarioperonista.imarioperonistat2=pygame.image.load("mundopict/marioperonistab2.png").convert_alpha()
+imarioperonista.lista=[[imarioperonista.imarioperonistab1,imarioperonista.imarioperonistab2],[],[imarioperonista.imarioperonistab1,imarioperonista.imarioperonistab2],[imarioperonista.imarioperonistat1,imarioperonista.imarioperonistat2]
                 ]      
 
 ianimacion=Imagenes()
@@ -242,32 +241,21 @@ icastingacronol=pygame.image.load("mundopict/castingacronol.png").convert_alpha(
 icastingacronob=pygame.image.load("mundopict/castingacronob.png").convert_alpha()
 icastingacronot=pygame.image.load("mundopict/castingacronot.png").convert_alpha()
 
-ifireballr=pygame.image.load("mundopict/fireballr.png").convert_alpha()
-ifireballl=pygame.image.load("mundopict/fireballl.png").convert_alpha()
-ifireballt=pygame.image.load("mundopict/fireballt.png").convert_alpha()
-ifireballb=pygame.image.load("mundopict/fireballb.png").convert_alpha()
-ifireballr2=pygame.image.load("mundopict/fireballr2.png").convert_alpha()
-ifireballl2=pygame.image.load("mundopict/fireballl2.png").convert_alpha()
-ifireballt2=pygame.image.load("mundopict/fireballt2.png").convert_alpha()
-ifireballb2=pygame.image.load("mundopict/fireballb2.png").convert_alpha()
-
-isnowballr=pygame.image.load("mundopict/snowballr.png").convert_alpha()
-isnowballl=pygame.image.load("mundopict/snowballr.png").convert_alpha()
-isnowballt=pygame.image.load("mundopict/snowballr.png").convert_alpha()
-isnowballb=pygame.image.load("mundopict/snowballr.png").convert_alpha()
-isnowballr2=pygame.image.load("mundopict/snowballr2.png").convert_alpha()
-isnowballl2=pygame.image.load("mundopict/snowballr2.png").convert_alpha()
-isnowballt2=pygame.image.load("mundopict/snowballr2.png").convert_alpha()
-isnowballb2=pygame.image.load("mundopict/snowballr2.png").convert_alpha()
-
-
+idisparor=pygame.image.load("mundopict/disparor.png").convert_alpha()
+idisparol=pygame.image.load("mundopict/disparol.png").convert_alpha()
+idisparot=pygame.image.load("mundopict/disparot.png").convert_alpha()
+idisparob=pygame.image.load("mundopict/disparob.png").convert_alpha()
+idisparor2=pygame.image.load("mundopict/disparor2.png").convert_alpha()
+idisparol2=pygame.image.load("mundopict/disparol2.png").convert_alpha()
+idisparot2=pygame.image.load("mundopict/disparot2.png").convert_alpha()
+idisparob2=pygame.image.load("mundopict/disparob2.png").convert_alpha()
 
 icasa1=pygame.image.load("mundopict/casa1.png").convert_alpha()   
 icasa2=pygame.image.load("mundopict/casa2.png").convert_alpha()
 iarbol=pygame.image.load("mundopict/arbol.png").convert_alpha()
 iarbol2=pygame.image.load("mundopict/arbol2.png").convert_alpha()
 
-ipozo=pygame.image.load("mundopict/pozo.png").convert_alpha()
+ipozo=pygame.image.load("mundopict/portall.png").convert_alpha()
 ishop=pygame.image.load("mundopict/shop1.png").convert_alpha()
 ishop2=pygame.image.load("mundopict/shop2.png").convert_alpha()
 ishop3=pygame.image.load("mundopict/shop3.png").convert_alpha()

@@ -1408,7 +1408,7 @@ def menu():
                # pygame.mixer.music.stop()
                 #intro.stop()
                 
-    pygame.mixer.music.load("mundopict/melody2.mid")
+    pygame.mixer.music.load("mundopict/Final Attack.mp3")
     pygame.mixer.music.play()
     while True:
         for event in pygame.event.get():

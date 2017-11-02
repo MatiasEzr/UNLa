@@ -1000,13 +1000,10 @@ def loadmusic():
     pygame.mixer.quit()
     pygame.mixer.init()
     listamusic=[
-    "mundopict/melodyfire.mid"
-    ,"mundopict/melodyrpg.mid"
-    ,"mundopict/melodytime.mid"
-    ,"mundopict/melody2.mid"
-    ,"mundopict/castle2.mid"
-    ,"mundopict/castle3.mid"
-    ,"mundopict/castle4.mid"
+    "mundopict/Diablo.mp3"
+    ,"mundopict/Back to the China.mp3"
+    ,"mundopict/Midnight.mp3"
+    ,"mundopict/Judgment.mp3"
     ]
     longitud=  len(listamusic) 
     r=random.randrange(longitud)  

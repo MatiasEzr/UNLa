@@ -1048,14 +1048,14 @@ def movercosas(player,fondo,pantalla,listamonster,listahechizos,
                 colision=True
                 break
             
-        # si colisionaron entoncees volver atras   
+        # si colisionaron entonces volver atras   
         if colision==True:
             fondo.update(pantalla,vx, vy)
             for wall in listawalls:
                 wall.move_ip(-vx,-vy)
             for objeto in listaobjetos:        
                 objeto.update(pantalla,vx,vy)
-            monstervx=0#uaxiliares
+            monstervx=0#auxiliares
             monstervy=0  
             
                    
@@ -1075,7 +1075,7 @@ def bossfight(player1):
 
     pygame.init()
     pantalla=pygame.display.set_mode((800,600))
-    pygame.display.set_caption("::: The Skeleton Quest RPG v0.7 :::")
+    pygame.display.set_caption("Barmith")
     pygame.display.set_icon(pygame.image.load("mundopict/iconlevel1.png").convert_alpha())
     pygame.mixer.music.load("mundopict/melodyboss.mid")
     reloj1= pygame.time.Clock()
@@ -1229,7 +1229,7 @@ def ice(player1):
 
     pygame.init()
     pantalla=pygame.display.set_mode((800,600))
-    pygame.display.set_caption("::: The Skeleton Quest RPG v0.7 :::")
+    pygame.display.set_caption("Barmith")
     pygame.display.set_icon(pygame.image.load("mundopict/iconlevel1.png").convert_alpha())
     loadmusic()
     reloj1= pygame.time.Clock()
@@ -1247,15 +1247,6 @@ def ice(player1):
     velocidad=8
     t= Times()
     listahechizos=[]
-    listamonster=[Teleporter_on_contact(ientradaice,250,200)
-                  ,Monsterfollower(ifuryorc,1000,200,1,1,5,5000,5,22000,350)
-                  ,Monsterfollower(ifuryorc,532,1031,1,1,5,5000,5,22000,350)
-                  ,Monsterfollower(ifuryorc,1644,586,1,1,5,5000,5,22000,350)
-                  ,Monsterfollower(ifuryorc,1941,1274,1,1,5,5000,5,22000,350)
-                  ,Monsterfollower(ifuryorc,2576,738,1,1,5,5000,5,22000,350)
-                  ,Monsterfollower(ifuryorc,2576,971,1,1,5,5000,5,22000,350)
-                  ,Monsterfollower(ifuryorc,1135,1781,1,1,5,5000,5,22000,350)
-                  ]
     listagold=[]
     listaobjetos=[]
     listawalls=[]
@@ -1547,14 +1538,8 @@ def main(cargar=False):
                  ,Monsterfollower(iskeletongreen, -810,840,1,1,3,700,4)
                  ,Monsterfollower(iskeletongreen,-810,750,1,1,3,700,4)
                  ,Monsterfollower(iskeletongreen, -870,840,1,1,3,700,4)
-                 ,Monsterfollower(iskeletongreen,-870,750,1,1,3,700,4)
+                 ,Monsterfollower(iskeletongreen,-870,750,1,1,3,700,4)]
                  
-                 ,Monsterfollower(iOrco,-4201,25,1,1,5,3000,5,22000,350)
-                ,Monsterfollower(iOrco,-913,1338,1,1,5,3000,5,22000,350)
-                ,Monsterfollower(iOrco,-739,63,1,1,5,3000,5,22000,350)
-                ,Monsterfollower(iOrco,-330,290,1,1,5,3000,5,22000,350)
-                  ]
-
     listaobjetos=[Shop(ishop,217,1034,"Dano meele"),
                   Shop(ishop2,217,1230,"Vida"),Shop(ishop3,743,1045,"Pociones"),
                   Shop(ishop4,756,826,"Heal"),Shop(ishop5,753,1245,"Velocidad"),

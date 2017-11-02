@@ -102,52 +102,6 @@ ianimacion.lista=[[ianimacion.ianimacionr1,ianimacion.ianimacionr2],
                     [ ianimacion.ianimaciont1,ianimacion.ianimaciont2]]
 
 
-ifuryorc=Imagenes()
-ifuryorc.ifuryorcr1=pygame.image.load("mundopict/furyorcr1.png").convert_alpha()
-ifuryorc.ifuryorcl1=pygame.image.load("mundopict/furyorcl1.png").convert_alpha()
-ifuryorc.ifuryorcb1=pygame.image.load("mundopict/furyorcb1.png").convert_alpha()
-ifuryorc.ifuryorct1=pygame.image.load("mundopict/furyorct1.png").convert_alpha()    
-ifuryorc.ifuryorcr2=pygame.image.load("mundopict/furyorcr2.png").convert_alpha()
-ifuryorc.ifuryorcl2=pygame.image.load("mundopict/furyorcl2.png").convert_alpha()
-ifuryorc.ifuryorcb2=pygame.image.load("mundopict/furyorcb2.png").convert_alpha()
-ifuryorc.ifuryorct2=pygame.image.load("mundopict/furyorct2.png").convert_alpha()   
-ifuryorc.lista=[[ifuryorc.ifuryorcr1,ifuryorc.ifuryorcr2],
-                    [ifuryorc.ifuryorcl1,ifuryorc.ifuryorcl2],
-                    [ifuryorc.ifuryorcb1,ifuryorc.ifuryorcb2],
-                    [ ifuryorc.ifuryorct1,ifuryorc.ifuryorct2]]
-
-
-iOrco=Imagenes()
-iOrco.iOrcor1=pygame.image.load("mundopict/Orcor1.png").convert_alpha()
-iOrco.iOrcol1=pygame.image.load("mundopict/Orcol1.png").convert_alpha()
-iOrco.iOrcob1=pygame.image.load("mundopict/Orcob1.png").convert_alpha()
-iOrco.iOrcot1=pygame.image.load("mundopict/Orcot1.png").convert_alpha()    
-iOrco.iOrcor2=pygame.image.load("mundopict/Orcor2.png").convert_alpha()
-iOrco.iOrcol2=pygame.image.load("mundopict/Orcol2.png").convert_alpha()
-iOrco.iOrcob2=pygame.image.load("mundopict/Orcob2.png").convert_alpha()
-iOrco.iOrcot2=pygame.image.load("mundopict/Orcot2.png").convert_alpha()   
-iOrco.lista=[[iOrco.iOrcor1,iOrco.iOrcor2],
-                    [iOrco.iOrcol1,iOrco.iOrcol2],
-                    [iOrco.iOrcob1,iOrco.iOrcob2],
-                    [ iOrco.iOrcot1,iOrco.iOrcot2]]
-
-
-
-
-iali=Imagenes()
-iali.ialir1=pygame.image.load("mundopict/alir1.png").convert_alpha()
-iali.ialil1=pygame.image.load("mundopict/alil1.png").convert_alpha()
-iali.ialib1=pygame.image.load("mundopict/alib1.png").convert_alpha()
-iali.ialit1=pygame.image.load("mundopict/alit1.png").convert_alpha()    
-iali.ialir2=pygame.image.load("mundopict/alir2.png").convert_alpha()
-iali.ialil2=pygame.image.load("mundopict/alil2.png").convert_alpha()
-iali.ialib2=pygame.image.load("mundopict/alib2.png").convert_alpha()
-iali.ialit2=pygame.image.load("mundopict/alit2.png").convert_alpha()   
-iali.lista=[[iali.ialir1,iali.ialir2],
-                    [iali.ialil1,iali.ialil2],
-                    [iali.ialib1,iali.ialib2],
-                    [ iali.ialit1,iali.ialit2]]
-
 
 iskeletongreen=Imagenes()
 iskeletongreen.iskeletonr1=pygame.image.load("mundopict/skeletongreenr1.png").convert_alpha()
@@ -249,11 +203,6 @@ idisparor2=pygame.image.load("mundopict/disparor2.png").convert_alpha()
 idisparol2=pygame.image.load("mundopict/disparol2.png").convert_alpha()
 idisparot2=pygame.image.load("mundopict/disparot2.png").convert_alpha()
 idisparob2=pygame.image.load("mundopict/disparob2.png").convert_alpha()
-
-icasa1=pygame.image.load("mundopict/casa1.png").convert_alpha()   
-icasa2=pygame.image.load("mundopict/casa2.png").convert_alpha()
-iarbol=pygame.image.load("mundopict/arbol.png").convert_alpha()
-iarbol2=pygame.image.load("mundopict/arbol2.png").convert_alpha()
 
 ipozo=pygame.image.load("mundopict/portall.png").convert_alpha()
 ishop=pygame.image.load("mundopict/shop1.png").convert_alpha()

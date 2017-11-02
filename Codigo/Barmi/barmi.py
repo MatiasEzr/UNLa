@@ -1555,12 +1555,10 @@ def main(cargar=False):
                 ,Monsterfollower(iOrco,-330,290,1,1,5,3000,5,22000,350)
                   ]
 
-    listaobjetos=[Objeto(icasa2,121,-131),Objeto(icasa1,669,-185)
-                  ,Objeto(icasa1,363,355),Objeto(icasa1,705,434)
-                  ,Objeto(icasa2,238,676),Shop(ishop,217,1034,"Dano"),
+    listaobjetos=[Shop(ishop,217,1034,"Dano meele"),
                   Shop(ishop2,217,1230,"Vida"),Shop(ishop3,743,1045,"Pociones"),
                   Shop(ishop4,756,826,"Heal"),Shop(ishop5,753,1245,"Velocidad"),
-                  Shop(ishop6,460,1307,"Magic")
+                  Shop(ishop6,460,1307,"Daño balistico")
                   ]
  
     listawalls=[pygame.Rect(88,5,1,900),pygame.Rect(88,1065,1,400),pygame.Rect(88,70,1000,2)

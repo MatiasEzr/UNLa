@@ -168,7 +168,7 @@ class Info(pygame.sprite.Sprite):
         self.text5="Damage: " + str(player.dano)
         self.textsurface5= pygame.font.SysFont("Arial", 14, True, False).render(self.text5,0,(255,255,255))        
 
-        self.text6="Daño Balistico: "+str(int(player.danob))
+        self.text6="DaÃ±o Balistico: "+str(int(player.danob))
         self.textsurface6= pygame.font.SysFont("Arial", 14, True, False).render(self.text6,0,(255,255,255))        
 
 
@@ -627,7 +627,7 @@ class Boss(pygame.sprite.Sprite):
             if r==2:
                 listamonstro.append(Monsterfollower(ilink,player.rect.left-70,player.rect.top+70,1,1,1,1000,4,1000))
 
-class Aldeano(Monster):
+class zombie(Monster):
     def __init__(self,imagenes,x=340,y=400,direccion=1,distancia_max=60,
                  dano=random.randrange(3,11),hp=100,text="HOLA",textactive=False,velocidad=1):
         Monster.__init__(self,imagenes,x,y,direccion,distancia_max,dano,hp,velocidad)
@@ -663,20 +663,20 @@ class Aldeano(Monster):
                 self.textactive=False               
            
 
-class Teleporter(Aldeano):
+class Teleporter(zombie):
     def __init__(self,imagenes,x=4189,y=538,direccion=0,distancia_max=0,
-                 dano=random.randrange(3,11),hp=100,text="You are now known as        the champion of Acrono",textactive=False,velocidad=1):
-       Aldeano.__init__(self, imagenes, x, y, direccion, distancia_max, dano, hp, text, textactive, velocidad)   
+                 dano=random.randrange(3,11),hp=100,text="Eres conocido como El Barmi, el campeon de Maincra",textactive=False,velocidad=1):
+       zombie.__init__(self, imagenes, x, y, direccion, distancia_max, dano, hp, text, textactive, velocidad)   
        self.teleporton=False
        self.zona="none"
     def teleport(self):
         self.teleporton=True
     def teleport_on_contact(self):
         pass           
-class Teleporter_on_contact(Aldeano):
+class Teleporter_on_contact(zombie):
     def __init__(self,imagenes,x=4189,y=538,direccion=0,distancia_max=0,
                  dano=random.randrange(3,11),hp=100,text=None,textactive=False,velocidad=1):
-       Aldeano.__init__(self, imagenes, x, y, direccion, distancia_max, dano, hp, text, textactive, velocidad)   
+       zombie.__init__(self, imagenes, x, y, direccion, distancia_max, dano, hp, text, textactive, velocidad)   
        self.teleporton=False    
        self.tipo="Teleporter_on_contact"
        self.zona="ice"
@@ -688,7 +688,7 @@ class Teleporter_on_contact(Aldeano):
                     
 class disparo(pygame.sprite.Sprite):
     def __init__(self,player):
-        player.casting=True
+        player.disparando=True
         
         self.tipo="disparo"
         self.imagenes=[[idisparor,idisparor2],[idisparol,idisparol2],[idisparot,idisparot2],[idisparob,idisparob2]]
@@ -746,7 +746,7 @@ class disparo(pygame.sprite.Sprite):
             if len(lista)<=1:
                 player.estapegando=False                
             lista.remove(self)
-            player.casting=False
+            player.disparando=False
    
 
 class espada(pygame.sprite.Sprite):
@@ -805,8 +805,8 @@ class espada(pygame.sprite.Sprite):
 class Player(pygame.sprite.Sprite):
     def __init__(self,imagen1,imagen2,imagen1l,imagen2l,imagen1t,imagen2t,imagen1b,imagen2b):
         self.imagenes=[[imagen1,imagen2],[imagen1l,imagen2l],[imagen1t,imagen2t],[imagen1b,imagen2b]]
-        self.imagenescasting=[icastingr,icastingl,icastingt,icastingb]
-        self.imagenescastingacrono=[icastingacronor,icastingacronol,icastingacronot,icastingacronob]
+        self.imagenesdisparando=[idisparandor,idisparandol,idisparandot,idisparandob]
+        self.imagenesdisparandoacrono=[idisparandoacronor,idisparandoacronol,idisparandoacronot,idisparandoacronob]
         self.imagendead=pygame.image.load("mundopict/dead.png").convert_alpha()        
         
         self.imagen=self.imagenes[3][0]
@@ -831,7 +831,7 @@ class Player(pygame.sprite.Sprite):
         self.leveledup=False
         self.enablepots=True
         self.estapegando=False
-        self.casting=False
+        self.disparando=False
         self.acrono=0
     def mover(self,vx,vy):
         if vx == 0 and vy ==0: self.moving=False
@@ -850,8 +850,8 @@ class Player(pygame.sprite.Sprite):
             self.leveledup=False
         if self.xp>=self.xptonextlevel:
             self.levelup(superficie,levelup,t)
-        if self.casting and not(self.estapegando):
-            self.imagen=self.imagenescasting[self.orientacion]
+        if self.disparando and not(self.estapegando):
+            self.imagen=self.imagenesdisparando[self.orientacion]
         elif not(self.moving):self.imagen=self.imagenes[self.orientacion][1]
         if self.moving and t.t==1:
             self.nextimage()        
@@ -883,8 +883,8 @@ class Player(pygame.sprite.Sprite):
             self.textsurface2 = pygame.font.SysFont("Arial", 14, True, False).render("LEVEL UP!",0,(255,255,255))
             surface.blit(self.textsurface2,(x,y-30))                   
     def nextimage(self):
-        if self.casting:
-            self.imagen=self.imagenescasting[self.orientacion]
+        if self.disparando:
+            self.imagen=self.imagenesdisparando[self.orientacion]
         else:
             self.imagen_actual+=1
             if self.imagen_actual==len(self.imagenes[self.orientacion]):
@@ -933,7 +933,7 @@ class Player(pygame.sprite.Sprite):
         imagen1b=pygame.image.load("mundopict/acronob1.png").convert_alpha()
         imagen2b=pygame.image.load("mundopict/acronob2.png").convert_alpha()
         self.imagenes=[[imagen1,imagen2],[imagen1l,imagen2l],[imagen1t,imagen2t],[imagen1b,imagen2b]]
-        self.imagenescasting=self.imagenescastingacrono
+        self.imagenesdisparando=self.imagenesdisparandoacrono
 class Fondo(pygame.sprite.Sprite):
     def __init__(self,imagen,x=-250,y=-1370):
         self.imagen=imagen
@@ -1000,10 +1000,10 @@ def loadmusic():
     pygame.mixer.quit()
     pygame.mixer.init()
     listamusic=[
-    "mundopict/Diablo.mp3"
-    ,"mundopict/Back to the China.mp3"
-    ,"mundopict/Midnight.mp3"
-    ,"mundopict/Judgment.mp3"
+    "mundopict/Diablo.wav"
+    ,"mundopict/Back to the China.wav"
+    ,"mundopict/Midnight.wav"
+    ,"mundopict/Judgment.wav"
     ]
     longitud=  len(listamusic) 
     r=random.randrange(longitud)  
@@ -1393,7 +1393,7 @@ def menu():
     c1=cursor()
     loadgamebool=None
     #intro=pygame.movie.Movie("mundopict/intro.mpg")
-    #pygame.mixer.music.load("mundopict/introsound.mp3")
+    #pygame.mixer.music.load("mundopict/introsound.wav")
     #pygame.mixer.music.play()
     #intro.play()
     
@@ -1408,7 +1408,7 @@ def menu():
                # pygame.mixer.music.stop()
                 #intro.stop()
                 
-    pygame.mixer.music.load("mundopict/Final Attack.mp3")
+    pygame.mixer.music.load("mundopict/Final Attack.wav")
     pygame.mixer.music.play()
     while True:
         for event in pygame.event.get():
@@ -1468,23 +1468,23 @@ def main(cargar=False):
     leftsigueapretada,rightsigueapretada,upsigueapretada,downsigueapretada=False,False,False,False
     listamonster=[Teleporter(iportal),Teleporter_on_contact(ientradaice,4191,44),
                  
-                  Aldeano(ianimacion,243,296,0,50,0,1,"Utiliza A para atacar y como boton de accion!",True)
-                  ,Aldeano(ialdeano,610,418,1,150,0,1,"Usa F1 para guardar tu partida")
-                  ,Aldeano(ivegeta,281,571,0,0,0,1,"Usa las pociones con la F")
-                  ,Aldeano(ianimacion,519,1107,1,250,0,1,"Utiliza S para disparar!")
-                  ,Aldeano(imegaman,368,946,0,80,0,1,"Odio esta musica, puedes quitarla apretando M")
-                  ,Monster(iskeleton,1170,144,0,15),Monster(iskeleton,1126,278,1,50)
-                  ,Monster(iskeleton,1156,1033,1,50),Monster(iskeleton,1168,1220,0,15)
-                  ,Monster(iskeleton,1552,588,0,10),Monster(iskeleton,1740,717,1,20)
-                  ,Monster(iskeleton,1484,459,0,20),Monster(iskeleton,1387,333,1,30)
-                  ,Monster(iskeleton,1552,308,0,40),Monster(iskeleton,1630,402,1,25)
-                  ,Monster(iskeleton,1677,451,0,40),Monster(iskeleton,1554,472,1,35)
-                  ,Monster(iskeleton,1760,372,1,35),Monster(iskeleton,1454,82,0,15)
-                  ,Monster(iskeleton,1429,101,1,35),Monster(iskeleton,1525,167,1,60)
-                  ,Monster(iskeleton,2062,207,0,45),Monster(iskeleton,1859,869,0,35)
-                  ,Monster(iskeleton,1628,207,0,45),Monster(iskeleton,1628,207,0,15)
-                  ,Monster(iskeleton,1760,764,1,25),Monster(iskeleton,1859,683,0,25)
-                  ,Monster(iskeleton,1950,1166,0,95)
+                  zombie(ianimacion,243,296,0,50,0,1,"Utiliza A para atacar         y como boton de accion!",True)
+                  ,zombie(izombie,610,418,1,150,0,1,"Usa F1 para guardar         tu partida")
+                  ,zombie(ivegeta,281,571,0,0,0,1,"Usa las pociones con la F,          insecto!")
+                  ,zombie(ianimacion,519,1107,1,250,0,1,"Utiliza S para disparar!")
+                  ,zombie(imegaman,368,946,0,80,0,1,"Odio esta musica, puedes         quitarla apretando M")
+                  ,Monster(igoku,1170,144,0,15),Monster(igoku,1126,278,1,50)
+                  ,Monster(igoku,1156,1033,1,50),Monster(igoku,1168,1220,0,15)
+                  ,Monster(igoku,1552,588,0,10),Monster(igoku,1740,717,1,20)
+                  ,Monster(igoku,1484,459,0,20),Monster(igoku,1387,333,1,30)
+                  ,Monster(igoku,1552,308,0,40),Monster(igoku,1630,402,1,25)
+                  ,Monster(igoku,1677,451,0,40),Monster(igoku,1554,472,1,35)
+                  ,Monster(igoku,1760,372,1,35),Monster(igoku,1454,82,0,15)
+                  ,Monster(igoku,1429,101,1,35),Monster(igoku,1525,167,1,60)
+                  ,Monster(igoku,2062,207,0,45),Monster(igoku,1859,869,0,35)
+                  ,Monster(igoku,1628,207,0,45),Monster(igoku,1628,207,0,15)
+                  ,Monster(igoku,1760,764,1,25),Monster(igoku,1859,683,0,25)
+                  ,Monster(igoku,1950,1166,0,95)
 
                   ,Monsterfollower(isonic,1979,139,1,1,1,300)
                   ,Monsterfollower(isonic,1678,1143,0,1,2,250,4)
@@ -1536,10 +1536,10 @@ def main(cargar=False):
                  ,Monsterfollower(isonic,-810,750,1,1,3,700,4)
                  ,Monsterfollower(isonic, -870,840,1,1,3,700,4)
                  ,Monsterfollower(isonic,-870,750,1,1,3,700,4)
-                ,Monsterfollower(iOrco,-4201,25,1,1,5,3000,5,22000,350)
-                ,Monsterfollower(iOrco,-913,1338,1,1,5,3000,5,22000,350)
-                ,Monsterfollower(iOrco,-739,63,1,1,5,3000,5,22000,350)
-                ,Monsterfollower(iOrco,-330,290,1,1,5,3000,5,22000,350)
+                ,Monsterfollower(icaballeronegro,-4201,25,1,1,5,3000,5,22000,350)
+                ,Monsterfollower(icaballeronegro,-913,1338,1,1,5,3000,5,22000,350)
+                ,Monsterfollower(icaballeronegro,-739,63,1,1,5,3000,5,22000,350)
+                ,Monsterfollower(icaballeronegro,-330,290,1,1,5,3000,5,22000,350)
                   ]
                  
     listaobjetos=[Shop(ishop,217,1034,"Dano meele"),

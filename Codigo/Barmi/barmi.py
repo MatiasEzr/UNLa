@@ -127,12 +127,12 @@ class Info(pygame.sprite.Sprite):
         self.fondo=pygame.image.load("mundopict/infofondo.png").convert_alpha() 
         self.iconhp=pygame.image.load("mundopict/iconhp.png").convert_alpha()  
         self.icondano=pygame.image.load("mundopict/icondano.png").convert_alpha()
-        self.icondanob=pygame.image.load("mundopict/icondanobalistico.png").convert_alpha()
+        self.iconmagic=pygame.image.load("mundopict/iconmagic.png").convert_alpha()
         self.iconspeed=  pygame.image.load("mundopict/iconspeed.png").convert_alpha()
         self.iconpot=pygame.image.load("mundopict/iconpot.png").convert_alpha()  
         self.icongold=pygame.image.load("mundopict/icongold.png").convert_alpha()
         self.iconskills=pygame.image.load("mundopict/skillon.png").convert_alpha()        
-        self.listaimagenes=[self.iconlevel,self.iconlevelup,self.iconhp,self.icondano,self.icondanob,self.iconspeed ,self.iconpot,self.icongold,self.iconskills]  
+        self.listaimagenes=[self.iconlevel,self.iconlevelup,self.iconhp,self.icondano,self.iconmagic,self.iconspeed ,self.iconpot,self.icongold,self.iconskills]  
         self.botones=pygame.image.load("mundopict/botones.png").convert_alpha()
         self.fps=pygame.font.SysFont("Arial", 14, True, False).render("0",0,(255,255,255))
        
@@ -168,7 +168,7 @@ class Info(pygame.sprite.Sprite):
         self.text5="Damage: " + str(player.dano)
         self.textsurface5= pygame.font.SysFont("Arial", 14, True, False).render(self.text5,0,(255,255,255))        
 
-        self.text6="Daño Balistico: "+str(int(player.danob))
+        self.text6="Magic: "+str(int(player.magic))
         self.textsurface6= pygame.font.SysFont("Arial", 14, True, False).render(self.text6,0,(255,255,255))        
 
 
@@ -239,8 +239,8 @@ class Shop(Objeto):
         elif self.tipo=="Velocidad":
             if jugador.velocidad<=14:
                 jugador.velocidad+=0.20
-        elif self.tipo=="danob":
-            jugador.danob+=3
+        elif self.tipo=="Magic":
+            jugador.magic+=3
        
        
 class Gold(pygame.sprite.Sprite):
@@ -621,11 +621,11 @@ class Boss(pygame.sprite.Sprite):
             self.tspawnbicho=0
             r=random.randrange(3)
             if r==0:
-                listamonstro.append(Monsterfollower(iskeletonred,player.rect.left-100,player.rect.top+100,1,1,1,1000,7,1000))
+                listamonstro.append(Monsterfollower(i,player.rect.left-100,player.rect.top+100,1,1,1,1000,7,1000))
             if r==1:
-                listamonstro.append(Monsterfollower(iskeletongreen,player.rect.left-100,player.rect.top+110,1,1,1,1000,5,1000))
+                listamonstro.append(Monsterfollower(isonic,player.rect.left-100,player.rect.top+110,1,1,1,1000,5,1000))
             if r==2:
-                listamonstro.append(Monsterfollower(ibarbarian,player.rect.left-70,player.rect.top+70,1,1,1,1000,4,1000))
+                listamonstro.append(Monsterfollower(ilink,player.rect.left-70,player.rect.top+70,1,1,1,1000,4,1000))
 
 class Aldeano(Monster):
     def __init__(self,imagenes,x=340,y=400,direccion=1,distancia_max=60,
@@ -723,7 +723,7 @@ class disparo(pygame.sprite.Sprite):
             self.destroy(lista,jugador)
         for monster in listamonster:
             if   monster.estavivo and monster.active and self.rect.colliderect(monster.rect) and t.t==1 and not monster.human:
-                monster.hp-=self.dano+(7*jugador.danob/8)
+                monster.hp-=self.dano+(7*jugador.magic/8)
                 self.sound.play()
                 pygame.draw.rect(superficie,(250,0,0),monster.rect)
                 self.destroy(lista,jugador)
@@ -824,7 +824,7 @@ class Player(pygame.sprite.Sprite):
         self.hp=100
         self.gold=0
         self.dano=5
-        self.danob=5
+        self.magic=5
         self.pots=1
         self.skillpoints=1
         self.estavivo=True
@@ -903,7 +903,7 @@ class Player(pygame.sprite.Sprite):
             self.xptonextlevel=(round(self.xptonextlevel,0))
             levelup.play()
             self.dano+=0
-            self.danob+=0
+            self.magic+=0
             self.hpmax+=20
             self.skillpoints+=10
             if self.hp<=75:
@@ -950,7 +950,7 @@ def save(player,listagold):
         destino=open("save.data","w+")
         destinogold=open("save.data2","w+")
         listaguardar=[player.xp, player.xptonextlevel, player.level,player.hpmax,player.hp,
-                      player.velocidad,player.gold,player.dano,player.danob,player.pots,player.acrono,player.skillpoints]
+                      player.velocidad,player.gold,player.dano,player.magic,player.pots,player.acrono,player.skillpoints]
         for x in range(len(listaguardar)):
             destino.write(str(listaguardar[x])+"\n")
 
@@ -980,7 +980,7 @@ def load(player,listagold):
         player.velocidad=listacargar[5]
         player.gold=listacargar[6]
         player.dano=listacargar[7]
-        player.danob=listacargar[8]       
+        player.magic=listacargar[8]       
         player.pots=listacargar[9]
         player.acrono=listacargar[10]
         player.skillpoints=listacargar[11]        
@@ -1081,7 +1081,7 @@ def bossfight(player1):
     cursor1=cursor()
     botonhp=Botonskill(130,50)
     botondamage=Botonskill(130,75)
-    botondanob=Botonskill(130,100)
+    botonmagic=Botonskill(130,100)
     botonspeed=Botonskill(130,125)    
     #player1=player1
     infotext= Info(0)
@@ -1123,8 +1123,8 @@ def bossfight(player1):
                             elif cursor1.colliderect(botondamage):
                                 player1.dano+=1
                                 player1.skillpoints-=1                                
-                            elif cursor1.colliderect(botondanob):
-                                player1.danob+=1
+                            elif cursor1.colliderect(botonmagic):
+                                player1.magic+=1
                                 player1.skillpoints-=1  
                             elif cursor1.colliderect(botonspeed):
                                 if player1.velocidad<=14:
@@ -1209,7 +1209,7 @@ def bossfight(player1):
         botonaudio.update(pantalla)
         botonhp.update(pantalla, player1)
         botondamage.update(pantalla, player1)
-        botondanob.update(pantalla, player1)
+        botonmagic.update(pantalla, player1)
         botonspeed.update(pantalla, player1)             
         pygame.display.update()
         if isinstance(listamonster[0],Teleporter):
@@ -1236,7 +1236,7 @@ def ice(player1):
     nieve1=Snow()
     botonhp=Botonskill(130,50)
     botondamage=Botonskill(130,75)
-    botondanob=Botonskill(130,100)
+    botonmagic=Botonskill(130,100)
     botonspeed=Botonskill(130,125)    
     #player1=player1
     infotext= Info(0)
@@ -1276,8 +1276,8 @@ def ice(player1):
                             elif cursor1.colliderect(botondamage):
                                 player1.dano+=1
                                 player1.skillpoints-=1                                
-                            elif cursor1.colliderect(botondanob):
-                                player1.danob+=1
+                            elif cursor1.colliderect(botonmagic):
+                                player1.magic+=1
                                 player1.skillpoints-=1  
                             elif cursor1.colliderect(botonspeed):
                                 if player1.velocidad<=14:
@@ -1363,7 +1363,7 @@ def ice(player1):
         botonaudio.update(pantalla)
         botonhp.update(pantalla, player1)
         botondamage.update(pantalla, player1)
-        botondanob.update(pantalla, player1)
+        botonmagic.update(pantalla, player1)
         botonspeed.update(pantalla, player1)             
         pygame.display.update()
         if isinstance(listamonster[0],Teleporter_on_contact):
@@ -1455,7 +1455,7 @@ def main(cargar=False):
     cursor1=cursor()
     botonhp=Botonskill(130,50)
     botondamage=Botonskill(130,75)
-    botondanob=Botonskill(130,100)
+    botonmagic=Botonskill(130,100)
     botonspeed=Botonskill(130,125)
     player1=Player(imagen1,imagen2,imagen1l,imagen2l,imagen1t,imagen2t,imagen1b,imagen2b)
 
@@ -1472,7 +1472,7 @@ def main(cargar=False):
                   ,Aldeano(ialdeano,610,418,1,150,0,1,"Usa F1 para guardar tu partida")
                   ,Aldeano(ivegeta,281,571,0,0,0,1,"Usa las pociones con la F")
                   ,Aldeano(ianimacion,519,1107,1,250,0,1,"Utiliza S para disparar!")
-                  ,Aldeano(ianciano,368,946,0,80,0,1,"Odio esta musica, puedes quitarla apretando M")
+                  ,Aldeano(imegaman,368,946,0,80,0,1,"Odio esta musica, puedes quitarla apretando M")
                   ,Monster(iskeleton,1170,144,0,15),Monster(iskeleton,1126,278,1,50)
                   ,Monster(iskeleton,1156,1033,1,50),Monster(iskeleton,1168,1220,0,15)
                   ,Monster(iskeleton,1552,588,0,10),Monster(iskeleton,1740,717,1,20)
@@ -1486,56 +1486,56 @@ def main(cargar=False):
                   ,Monster(iskeleton,1760,764,1,25),Monster(iskeleton,1859,683,0,25)
                   ,Monster(iskeleton,1950,1166,0,95)
 
-                  ,Monsterfollower(iskeletongreen,1979,139,1,1,1,300)
-                  ,Monsterfollower(iskeletongreen,1678,1143,0,1,2,250,4)
-                  ,Monsterfollower(iskeletongreen,2310,1073,0,1,1,300,4)
-                  ,Monsterfollower(iskeletongreen,2710,1073,0,1,1,300,5)
-                  ,Monsterfollower(iskeletongreen,2216,1242,1,1,1,300,4)
-                  ,Monsterfollower(iskeletongreen,2675,1151,1,1,2,400,4)
-                  ,Monsterfollower(ibarbarian,2394,642,1,1,3,1200,5,2000)
-                  ,Monsterfollower(ibarbarian,2503,141,1,1,3,1000,5,2000)
-                  ,Monsterfollower(ibarbarian,2966,532,1,1,3,1000,5,8000)#
-                  ,Monsterfollower(ibarbarian,2976,773,1,1,3,1000,5,2000)#
-                  ,Monsterfollower(ibarbarian,3105,639,1,1,3,1000,5,2000)#
-                  ,Monsterfollower(ibarbarian,3400,561,1,1,3,1000,5,2000)#
-                  ,Monsterfollower(ibarbarian,3078,142,1,1,3,1000,5,2000)
-                  ,Monsterfollower(ibarbarian,3138,1145,1,1,3,1000,5,2000)
-                  ,Monsterfollower(iskeletonred,4028,879,1,1,5,3000,5,4000,200)
-                  ,Monsterfollower(iskeletonred,3943,700,1,1,3,3000,6,4000,350)
-                  ,Monsterfollower(iskeletonred,3408,125,1,1,5,3000,5,22000,200)
-                  ,Monsterfollower(iskeletonred,3966,97,1,1,5,2000,6,10000,350)
-                  ,Monsterfollower(iskeletonred,3826,527,1,1,3,3000,6,22000,200)
-                  ,Monsterfollower(iskeletonred,3826,670,1,1,4,2000,5,10000)
-                  ,Monsterfollower(iskeletonred,3896,635,1,1,5,3000,5,22000,200)
-                  ,Monsterfollower(iskeletonred,4118,527,1,1,6,2000,5,22000)
-                  ,Monsterfollower(iskeletonred,4118,670,1,1,7,3000,5,22000,200)
-                  ,Monsterfollower(iskeletongreen,3275,1103,1,1,2,400,4)
-                  ,Monsterfollower(iskeletongreen,3387,1103,1,1,2,400,4)
-                  ,Monsterfollower(iskeletongreen,3353,1103,1,1,2,400,4)
-                  ,Monsterfollower(iskeletongreen,3275,1220,1,1,2,400,4)
-                  ,Monsterfollower(iskeletongreen,3494,1201,1,1,2,400,4)
-                 ,Monsterfollower(iskeletongreen,3610,1251,1,1,2,400,4)
-                 ,Monsterfollower(iskeletongreen,3698,1213,1,1,2,400,4)
-                 ,Monsterfollower(iskeletongreen,3779,1251,1,1,2,400,4)
-                 ,Monsterfollower(iskeletongreen,3837,1201,1,1,2,400,4)
-                 ,Monsterfollower(iskeletongreen,4013,1201,1,1,2,400,4)
-                 ,Monsterfollower(iskeletongreen,4052,1242,1,1,2,400,4)
-                 ,Monsterfollower(iskeletongreen,4132,1201,1,1,2,400,4)
-                 ,Monsterfollower(iskeletongreen,4186,1251,1,1,2,400,4)
+                  ,Monsterfollower(isonic,1979,139,1,1,1,300)
+                  ,Monsterfollower(isonic,1678,1143,0,1,2,250,4)
+                  ,Monsterfollower(isonic,2310,1073,0,1,1,300,4)
+                  ,Monsterfollower(isonic,2710,1073,0,1,1,300,5)
+                  ,Monsterfollower(isonic,2216,1242,1,1,1,300,4)
+                  ,Monsterfollower(isonic,2675,1151,1,1,2,400,4)
+                  ,Monsterfollower(ilink,2394,642,1,1,3,1200,5,2000)
+                  ,Monsterfollower(ilink,2503,141,1,1,3,1000,5,2000)
+                  ,Monsterfollower(ilink,2966,532,1,1,3,1000,5,8000)#
+                  ,Monsterfollower(ilink,2976,773,1,1,3,1000,5,2000)#
+                  ,Monsterfollower(ilink,3105,639,1,1,3,1000,5,2000)#
+                  ,Monsterfollower(ilink,3400,561,1,1,3,1000,5,2000)#
+                  ,Monsterfollower(ilink,3078,142,1,1,3,1000,5,2000)
+                  ,Monsterfollower(ilink,3138,1145,1,1,3,1000,5,2000)
+                  ,Monsterfollower(ipikachuyellow,4028,879,1,1,5,3000,5,4000,200)
+                  ,Monsterfollower(ipikachuyellow,3943,700,1,1,3,3000,6,4000,350)
+                  ,Monsterfollower(ipikachuyellow,3408,125,1,1,5,3000,5,22000,200)
+                  ,Monsterfollower(ipikachuyellow,3966,97,1,1,5,2000,6,10000,350)
+                  ,Monsterfollower(ipikachuyellow,3826,527,1,1,3,3000,6,22000,200)
+                  ,Monsterfollower(ipikachuyellow,3826,670,1,1,4,2000,5,10000)
+                  ,Monsterfollower(ipikachuyellow,3896,635,1,1,5,3000,5,22000,200)
+                  ,Monsterfollower(ipikachuyellow,4118,527,1,1,6,2000,5,22000)
+                  ,Monsterfollower(ipikachuyellow,4118,670,1,1,7,3000,5,22000,200)
+                  ,Monsterfollower(isonic,3275,1103,1,1,2,400,4)
+                  ,Monsterfollower(isonic,3387,1103,1,1,2,400,4)
+                  ,Monsterfollower(isonic,3353,1103,1,1,2,400,4)
+                  ,Monsterfollower(isonic,3275,1220,1,1,2,400,4)
+                  ,Monsterfollower(isonic,3494,1201,1,1,2,400,4)
+                 ,Monsterfollower(isonic,3610,1251,1,1,2,400,4)
+                 ,Monsterfollower(isonic,3698,1213,1,1,2,400,4)
+                 ,Monsterfollower(isonic,3779,1251,1,1,2,400,4)
+                 ,Monsterfollower(isonic,3837,1201,1,1,2,400,4)
+                 ,Monsterfollower(isonic,4013,1201,1,1,2,400,4)
+                 ,Monsterfollower(isonic,4052,1242,1,1,2,400,4)
+                 ,Monsterfollower(isonic,4132,1201,1,1,2,400,4)
+                 ,Monsterfollower(isonic,4186,1251,1,1,2,400,4)
                  #marioperonistas
                  ,Monsterfollower(imarioperonista,-443,-28,1,1,4,2000,4,22000)
                  ,Monsterfollower(imarioperonista,-554,434,1,1,4,2000,4,15000)
                  ,Monsterfollower(imarioperonista,-886,444,1,1,4,2000,4,15000)
                  ,Monsterfollower(imarioperonista,-443,1417,1,1,4,2000,4,15000)
-                 ,Monsterfollower(iskeletonred,-601,1161,1,1,7,3000,7,32000,200)
-                 ,Monsterfollower(iskeletonred,-891,0,1,1,7,3000,7,22000,200)
+                 ,Monsterfollower(ipikachuyellow,-601,1161,1,1,7,3000,7,32000,200)
+                 ,Monsterfollower(ipikachuyellow,-891,0,1,1,7,3000,7,22000,200)
                 
-                 ,Monsterfollower(iskeletongreen, -739,840,1,1,3,700,4)
-                 ,Monsterfollower(iskeletongreen,-739,750,1,1,3,700,4)
-                 ,Monsterfollower(iskeletongreen, -810,840,1,1,3,700,4)
-                 ,Monsterfollower(iskeletongreen,-810,750,1,1,3,700,4)
-                 ,Monsterfollower(iskeletongreen, -870,840,1,1,3,700,4)
-                 ,Monsterfollower(iskeletongreen,-870,750,1,1,3,700,4)
+                 ,Monsterfollower(isonic, -739,840,1,1,3,700,4)
+                 ,Monsterfollower(isonic,-739,750,1,1,3,700,4)
+                 ,Monsterfollower(isonic, -810,840,1,1,3,700,4)
+                 ,Monsterfollower(isonic,-810,750,1,1,3,700,4)
+                 ,Monsterfollower(isonic, -870,840,1,1,3,700,4)
+                 ,Monsterfollower(isonic,-870,750,1,1,3,700,4)
                 ,Monsterfollower(iOrco,-4201,25,1,1,5,3000,5,22000,350)
                 ,Monsterfollower(iOrco,-913,1338,1,1,5,3000,5,22000,350)
                 ,Monsterfollower(iOrco,-739,63,1,1,5,3000,5,22000,350)
@@ -1545,7 +1545,7 @@ def main(cargar=False):
     listaobjetos=[Shop(ishop,217,1034,"Dano meele"),
                   Shop(ishop2,217,1230,"Vida"),Shop(ishop3,743,1045,"Pociones"),
                   Shop(ishop4,756,826,"Heal"),Shop(ishop5,753,1245,"Velocidad"),
-                  Shop(ishop6,460,1307,"danob")
+                  Shop(ishop6,460,1307,"Daño balistico")
                   ]
  
     listawalls=[pygame.Rect(88,5,1,900),pygame.Rect(88,1065,1,400),pygame.Rect(88,70,1000,2)
@@ -1610,8 +1610,8 @@ def main(cargar=False):
                             elif cursor1.colliderect(botondamage):
                                 player1.dano+=1
                                 player1.skillpoints-=1                                
-                            elif cursor1.colliderect(botondanob):
-                                player1.danob+=1
+                            elif cursor1.colliderect(botonmagic):
+                                player1.magic+=1
                                 player1.skillpoints-=1  
                             elif cursor1.colliderect(botonspeed):
                                 if player1.velocidad<=14:
@@ -1732,7 +1732,7 @@ def main(cargar=False):
         botonaudio.update(pantalla)
         botonhp.update(pantalla, player1)
         botondamage.update(pantalla, player1)
-        botondanob.update(pantalla, player1)
+        botonmagic.update(pantalla, player1)
         botonspeed.update(pantalla, player1)        
         if printsave:
             if t.tde40>=40:

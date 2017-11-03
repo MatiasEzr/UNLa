@@ -15,21 +15,21 @@ disparosound.set_volume(0.6)
 
 
 
-imagen1=pygame.image.load("mundopict/knightr1.png").convert_alpha()
-imagen2=pygame.image.load("mundopict/knightr2.png").convert_alpha()
-imagen1l=pygame.image.load("mundopict/knightl1.png").convert_alpha()
-imagen2l=pygame.image.load("mundopict/knightl2.png").convert_alpha()    
-imagen1t=pygame.image.load("mundopict/knightt1.png").convert_alpha()
-imagen2t=pygame.image.load("mundopict/knightt2.png").convert_alpha()
-imagen1b=pygame.image.load("mundopict/knightb1.png").convert_alpha()
-imagen2b=pygame.image.load("mundopict/knightb2.png").convert_alpha()
+imagen1=pygame.image.load("mundopict/barmithr1.png").convert_alpha()
+imagen2=pygame.image.load("mundopict/barmithr2.png").convert_alpha()
+imagen1l=pygame.image.load("mundopict/barmithl1.png").convert_alpha()
+imagen2l=pygame.image.load("mundopict/barmithl2.png").convert_alpha()    
+imagen1t=pygame.image.load("mundopict/barmitht1.png").convert_alpha()
+imagen2t=pygame.image.load("mundopict/barmitht2.png").convert_alpha()
+imagen1b=pygame.image.load("mundopict/barmithb1.png").convert_alpha()
+imagen2b=pygame.image.load("mundopict/barmithb2.png").convert_alpha()
 
-ianciano= Imagenes()
-ianciano.iancianor1=pygame.image.load("mundopict/ancianor1.png").convert_alpha()
-ianciano.iancianor2=pygame.image.load("mundopict/ancianor2.png").convert_alpha()
-ianciano.iancianol1=pygame.image.load("mundopict/ancianol1.png").convert_alpha()
-ianciano.iancianol2=pygame.image.load("mundopict/ancianol2.png").convert_alpha()
-ianciano.lista=[[ianciano.iancianor1,ianciano.iancianor2],[ianciano.iancianol1,ianciano.iancianol2],
+imegaman= Imagenes()
+imegaman.imegamanr1=pygame.image.load("mundopict/megamanr1.png").convert_alpha()
+imegaman.imegamanr2=pygame.image.load("mundopict/megamanr2.png").convert_alpha()
+imegaman.imegamanl1=pygame.image.load("mundopict/megamanl1.png").convert_alpha()
+imegaman.imegamanl2=pygame.image.load("mundopict/megamanl2.png").convert_alpha()
+imegaman.lista=[[imegaman.imegamanr1,imegaman.imegamanr2],[imegaman.imegamanl1,imegaman.imegamanl2],
                 [],[]]
 
 ivegeta= Imagenes()
@@ -120,36 +120,36 @@ iOrco.lista=[[iOrco.iOrcor1,iOrco.iOrcor2],
 
 
 
-iskeletongreen=Imagenes()
-iskeletongreen.iskeletonr1=pygame.image.load("mundopict/skeletongreenr1.png").convert_alpha()
-iskeletongreen.iskeletonl1=pygame.image.load("mundopict/skeletongreenl1.png").convert_alpha()
-iskeletongreen.iskeletonb1=pygame.image.load("mundopict/skeletongreenb1.png").convert_alpha()
-iskeletongreen.iskeletont1=pygame.image.load("mundopict/skeletongreent1.png").convert_alpha()    
-iskeletongreen.iskeletonr2=pygame.image.load("mundopict/skeletongreenr2.png").convert_alpha()
-iskeletongreen.iskeletonl2=pygame.image.load("mundopict/skeletongreenl2.png").convert_alpha()
-iskeletongreen.iskeletonb2=pygame.image.load("mundopict/skeletongreenb2.png").convert_alpha()
-iskeletongreen.iskeletont2=pygame.image.load("mundopict/skeletongreent2.png").convert_alpha()   
-iskeletongreen.lista=[[iskeletongreen.iskeletonr1,iskeletongreen.iskeletonr2],
-					[iskeletongreen.iskeletonl1,iskeletongreen.iskeletonl2],
-					[iskeletongreen.iskeletonb1,iskeletongreen.iskeletonb2],
-					[ iskeletongreen.iskeletont1,iskeletongreen.iskeletont2]]
+isonic=Imagenes()
+isonic.iskeletonr1=pygame.image.load("mundopict/sonicr1.png").convert_alpha()
+isonic.iskeletonl1=pygame.image.load("mundopict/sonicl1.png").convert_alpha()
+isonic.iskeletonb1=pygame.image.load("mundopict/sonicb1.png").convert_alpha()
+isonic.iskeletont1=pygame.image.load("mundopict/sonict1.png").convert_alpha()    
+isonic.iskeletonr2=pygame.image.load("mundopict/sonicr2.png").convert_alpha()
+isonic.iskeletonl2=pygame.image.load("mundopict/sonicl2.png").convert_alpha()
+isonic.iskeletonb2=pygame.image.load("mundopict/sonicb2.png").convert_alpha()
+isonic.iskeletont2=pygame.image.load("mundopict/sonict2.png").convert_alpha()   
+isonic.lista=[[isonic.iskeletonr1,isonic.iskeletonr2],
+					[isonic.iskeletonl1,isonic.iskeletonl2],
+					[isonic.iskeletonb1,isonic.iskeletonb2],
+					[ isonic.iskeletont1,isonic.iskeletont2]]
 
 
 
 
-iskeletonred=Imagenes()
-iskeletonred.iskeletonr1=pygame.image.load("mundopict/skeletonredr1.png").convert_alpha()
-iskeletonred.iskeletonl1=pygame.image.load("mundopict/skeletonredl1.png").convert_alpha()
-iskeletonred.iskeletonb1=pygame.image.load("mundopict/skeletonredb1.png").convert_alpha()
-iskeletonred.iskeletont1=pygame.image.load("mundopict/skeletonredt1.png").convert_alpha()    
-iskeletonred.iskeletonr2=pygame.image.load("mundopict/skeletonredr2.png").convert_alpha()
-iskeletonred.iskeletonl2=pygame.image.load("mundopict/skeletonredl2.png").convert_alpha()
-iskeletonred.iskeletonb2=pygame.image.load("mundopict/skeletonredb2.png").convert_alpha()
-iskeletonred.iskeletont2=pygame.image.load("mundopict/skeletonredt2.png").convert_alpha()   
-iskeletonred.lista=[[iskeletonred.iskeletonr1,iskeletonred.iskeletonr2],
-                    [iskeletonred.iskeletonl1,iskeletonred.iskeletonl2],
-                    [iskeletonred.iskeletonb1,iskeletonred.iskeletonb2],
-                    [ iskeletonred.iskeletont1,iskeletonred.iskeletont2]]
+ipikachuyellow=Imagenes()
+ipikachuyellow.iskeletonr1=pygame.image.load("mundopict/pikachuyellowr1.png").convert_alpha()
+ipikachuyellow.iskeletonl1=pygame.image.load("mundopict/pikachuyellowl1.png").convert_alpha()
+ipikachuyellow.iskeletonb1=pygame.image.load("mundopict/pikachuyellowb1.png").convert_alpha()
+ipikachuyellow.iskeletont1=pygame.image.load("mundopict/pikachuyellowt1.png").convert_alpha()    
+ipikachuyellow.iskeletonr2=pygame.image.load("mundopict/pikachuyellowr2.png").convert_alpha()
+ipikachuyellow.iskeletonl2=pygame.image.load("mundopict/pikachuyellowl2.png").convert_alpha()
+ipikachuyellow.iskeletonb2=pygame.image.load("mundopict/pikachuyellowb2.png").convert_alpha()
+ipikachuyellow.iskeletont2=pygame.image.load("mundopict/pikachuyellowt2.png").convert_alpha()   
+ipikachuyellow.lista=[[ipikachuyellow.iskeletonr1,ipikachuyellow.iskeletonr2],
+                    [ipikachuyellow.iskeletonl1,ipikachuyellow.iskeletonl2],
+                    [ipikachuyellow.iskeletonb1,ipikachuyellow.iskeletonb2],
+                    [ ipikachuyellow.iskeletont1,ipikachuyellow.iskeletont2]]
 
 iskeleton=Imagenes()
 iskeleton.iskeletonr1=pygame.image.load("mundopict/skeletonr1.png").convert_alpha()
@@ -166,19 +166,19 @@ iskeleton.lista=[[iskeleton.iskeletonr1,iskeleton.iskeletonr2],
 				[ iskeleton.iskeletont1,iskeleton.iskeletont2]]
 
 
-ibarbarian=Imagenes()
-ibarbarian.barbarianr1=pygame.image.load("mundopict/barbarian8.png").convert_alpha()
-ibarbarian.barbarianl1=pygame.image.load("mundopict/barbarian10.png").convert_alpha()
-ibarbarian.barbarianb1=pygame.image.load("mundopict/barbarian2.png").convert_alpha()
-ibarbarian.barbariant1=pygame.image.load("mundopict/barbarian5.png").convert_alpha()    
-ibarbarian.barbarianr2=pygame.image.load("mundopict/barbarian9.png").convert_alpha()
-ibarbarian.barbarianl2=pygame.image.load("mundopict/barbarian11.png").convert_alpha()
-ibarbarian.barbarianb2=pygame.image.load("mundopict/barbarian3.png").convert_alpha()
-ibarbarian.barbariant2=pygame.image.load("mundopict/barbarian6.png").convert_alpha()   
-ibarbarian.lista=[[ibarbarian.barbarianr1,ibarbarian.barbarianr2],
-                [ibarbarian.barbarianl1,ibarbarian.barbarianl2],
-                [ibarbarian.barbarianb1,ibarbarian.barbarianb2],
-                [ ibarbarian.barbariant1,ibarbarian.barbariant2]]
+ilink=Imagenes()
+ilink.linkr1=pygame.image.load("mundopict/link8.png").convert_alpha()
+ilink.linkl1=pygame.image.load("mundopict/link10.png").convert_alpha()
+ilink.linkb1=pygame.image.load("mundopict/link2.png").convert_alpha()
+ilink.linkt1=pygame.image.load("mundopict/link5.png").convert_alpha()    
+ilink.linkr2=pygame.image.load("mundopict/link9.png").convert_alpha()
+ilink.linkl2=pygame.image.load("mundopict/link11.png").convert_alpha()
+ilink.linkb2=pygame.image.load("mundopict/link3.png").convert_alpha()
+ilink.linkt2=pygame.image.load("mundopict/link6.png").convert_alpha()   
+ilink.lista=[[ilink.linkr1,ilink.linkr2],
+                [ilink.linkl1,ilink.linkl2],
+                [ilink.linkb1,ilink.linkb2],
+                [ ilink.linkt1,ilink.linkt2]]
 
 iespada=pygame.image.load("mundopict/espada.png").convert_alpha()
 iespadal=pygame.image.load("mundopict/espadal.png").convert_alpha()

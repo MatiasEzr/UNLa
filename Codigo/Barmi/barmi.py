@@ -127,12 +127,12 @@ class Info(pygame.sprite.Sprite):
         self.fondo=pygame.image.load("mundopict/infofondo.png").convert_alpha() 
         self.iconhp=pygame.image.load("mundopict/iconhp.png").convert_alpha()  
         self.icondano=pygame.image.load("mundopict/icondano.png").convert_alpha()
-        self.iconmagic=pygame.image.load("mundopict/iconmagic.png").convert_alpha()
+        self.icondanob=pygame.image.load("mundopict/icondanobalistico.png").convert_alpha()
         self.iconspeed=  pygame.image.load("mundopict/iconspeed.png").convert_alpha()
         self.iconpot=pygame.image.load("mundopict/iconpot.png").convert_alpha()  
         self.icongold=pygame.image.load("mundopict/icongold.png").convert_alpha()
         self.iconskills=pygame.image.load("mundopict/skillon.png").convert_alpha()        
-        self.listaimagenes=[self.iconlevel,self.iconlevelup,self.iconhp,self.icondano,self.iconmagic,self.iconspeed ,self.iconpot,self.icongold,self.iconskills]  
+        self.listaimagenes=[self.iconlevel,self.iconlevelup,self.iconhp,self.icondano,self.icondanob,self.iconspeed ,self.iconpot,self.icongold,self.iconskills]  
         self.botones=pygame.image.load("mundopict/botones.png").convert_alpha()
         self.fps=pygame.font.SysFont("Arial", 14, True, False).render("0",0,(255,255,255))
        
@@ -168,7 +168,7 @@ class Info(pygame.sprite.Sprite):
         self.text5="Damage: " + str(player.dano)
         self.textsurface5= pygame.font.SysFont("Arial", 14, True, False).render(self.text5,0,(255,255,255))        
 
-        self.text6="Magic: "+str(int(player.magic))
+        self.text6="Daño Balistico: "+str(int(player.danob))
         self.textsurface6= pygame.font.SysFont("Arial", 14, True, False).render(self.text6,0,(255,255,255))        
 
 
@@ -239,8 +239,8 @@ class Shop(Objeto):
         elif self.tipo=="Velocidad":
             if jugador.velocidad<=14:
                 jugador.velocidad+=0.20
-        elif self.tipo=="Magic":
-            jugador.magic+=3
+        elif self.tipo=="danob":
+            jugador.danob+=3
        
        
 class Gold(pygame.sprite.Sprite):
@@ -723,7 +723,7 @@ class disparo(pygame.sprite.Sprite):
             self.destroy(lista,jugador)
         for monster in listamonster:
             if   monster.estavivo and monster.active and self.rect.colliderect(monster.rect) and t.t==1 and not monster.human:
-                monster.hp-=self.dano+(7*jugador.magic/8)
+                monster.hp-=self.dano+(7*jugador.danob/8)
                 self.sound.play()
                 pygame.draw.rect(superficie,(250,0,0),monster.rect)
                 self.destroy(lista,jugador)
@@ -824,7 +824,7 @@ class Player(pygame.sprite.Sprite):
         self.hp=100
         self.gold=0
         self.dano=5
-        self.magic=5
+        self.danob=5
         self.pots=1
         self.skillpoints=1
         self.estavivo=True
@@ -903,7 +903,7 @@ class Player(pygame.sprite.Sprite):
             self.xptonextlevel=(round(self.xptonextlevel,0))
             levelup.play()
             self.dano+=0
-            self.magic+=0
+            self.danob+=0
             self.hpmax+=20
             self.skillpoints+=10
             if self.hp<=75:
@@ -950,7 +950,7 @@ def save(player,listagold):
         destino=open("save.data","w+")
         destinogold=open("save.data2","w+")
         listaguardar=[player.xp, player.xptonextlevel, player.level,player.hpmax,player.hp,
-                      player.velocidad,player.gold,player.dano,player.magic,player.pots,player.acrono,player.skillpoints]
+                      player.velocidad,player.gold,player.dano,player.danob,player.pots,player.acrono,player.skillpoints]
         for x in range(len(listaguardar)):
             destino.write(str(listaguardar[x])+"\n")
 
@@ -980,7 +980,7 @@ def load(player,listagold):
         player.velocidad=listacargar[5]
         player.gold=listacargar[6]
         player.dano=listacargar[7]
-        player.magic=listacargar[8]       
+        player.danob=listacargar[8]       
         player.pots=listacargar[9]
         player.acrono=listacargar[10]
         player.skillpoints=listacargar[11]        
@@ -1081,7 +1081,7 @@ def bossfight(player1):
     cursor1=cursor()
     botonhp=Botonskill(130,50)
     botondamage=Botonskill(130,75)
-    botonmagic=Botonskill(130,100)
+    botondanob=Botonskill(130,100)
     botonspeed=Botonskill(130,125)    
     #player1=player1
     infotext= Info(0)
@@ -1123,8 +1123,8 @@ def bossfight(player1):
                             elif cursor1.colliderect(botondamage):
                                 player1.dano+=1
                                 player1.skillpoints-=1                                
-                            elif cursor1.colliderect(botonmagic):
-                                player1.magic+=1
+                            elif cursor1.colliderect(botondanob):
+                                player1.danob+=1
                                 player1.skillpoints-=1  
                             elif cursor1.colliderect(botonspeed):
                                 if player1.velocidad<=14:
@@ -1209,7 +1209,7 @@ def bossfight(player1):
         botonaudio.update(pantalla)
         botonhp.update(pantalla, player1)
         botondamage.update(pantalla, player1)
-        botonmagic.update(pantalla, player1)
+        botondanob.update(pantalla, player1)
         botonspeed.update(pantalla, player1)             
         pygame.display.update()
         if isinstance(listamonster[0],Teleporter):
@@ -1236,7 +1236,7 @@ def ice(player1):
     nieve1=Snow()
     botonhp=Botonskill(130,50)
     botondamage=Botonskill(130,75)
-    botonmagic=Botonskill(130,100)
+    botondanob=Botonskill(130,100)
     botonspeed=Botonskill(130,125)    
     #player1=player1
     infotext= Info(0)
@@ -1276,8 +1276,8 @@ def ice(player1):
                             elif cursor1.colliderect(botondamage):
                                 player1.dano+=1
                                 player1.skillpoints-=1                                
-                            elif cursor1.colliderect(botonmagic):
-                                player1.magic+=1
+                            elif cursor1.colliderect(botondanob):
+                                player1.danob+=1
                                 player1.skillpoints-=1  
                             elif cursor1.colliderect(botonspeed):
                                 if player1.velocidad<=14:
@@ -1363,7 +1363,7 @@ def ice(player1):
         botonaudio.update(pantalla)
         botonhp.update(pantalla, player1)
         botondamage.update(pantalla, player1)
-        botonmagic.update(pantalla, player1)
+        botondanob.update(pantalla, player1)
         botonspeed.update(pantalla, player1)             
         pygame.display.update()
         if isinstance(listamonster[0],Teleporter_on_contact):
@@ -1455,7 +1455,7 @@ def main(cargar=False):
     cursor1=cursor()
     botonhp=Botonskill(130,50)
     botondamage=Botonskill(130,75)
-    botonmagic=Botonskill(130,100)
+    botondanob=Botonskill(130,100)
     botonspeed=Botonskill(130,125)
     player1=Player(imagen1,imagen2,imagen1l,imagen2l,imagen1t,imagen2t,imagen1b,imagen2b)
 
@@ -1545,7 +1545,7 @@ def main(cargar=False):
     listaobjetos=[Shop(ishop,217,1034,"Dano meele"),
                   Shop(ishop2,217,1230,"Vida"),Shop(ishop3,743,1045,"Pociones"),
                   Shop(ishop4,756,826,"Heal"),Shop(ishop5,753,1245,"Velocidad"),
-                  Shop(ishop6,460,1307,"DaÃ±o balistico")
+                  Shop(ishop6,460,1307,"danob")
                   ]
  
     listawalls=[pygame.Rect(88,5,1,900),pygame.Rect(88,1065,1,400),pygame.Rect(88,70,1000,2)
@@ -1610,8 +1610,8 @@ def main(cargar=False):
                             elif cursor1.colliderect(botondamage):
                                 player1.dano+=1
                                 player1.skillpoints-=1                                
-                            elif cursor1.colliderect(botonmagic):
-                                player1.magic+=1
+                            elif cursor1.colliderect(botondanob):
+                                player1.danob+=1
                                 player1.skillpoints-=1  
                             elif cursor1.colliderect(botonspeed):
                                 if player1.velocidad<=14:
@@ -1732,7 +1732,7 @@ def main(cargar=False):
         botonaudio.update(pantalla)
         botonhp.update(pantalla, player1)
         botondamage.update(pantalla, player1)
-        botonmagic.update(pantalla, player1)
+        botondanob.update(pantalla, player1)
         botonspeed.update(pantalla, player1)        
         if printsave:
             if t.tde40>=40:
